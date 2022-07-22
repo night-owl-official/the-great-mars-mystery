@@ -10,18 +10,17 @@ public class Bullet : MonoBehaviour {
     public string Owner {
         get { return m_owner; }
         set {
+            // Owner can only be set once
             if (m_owner == "Untagged")
                 m_owner = value;
-            else
-                return;
         }
     }
 
     // Runs when the collider enters a trigger collision
     private void OnTriggerEnter2D(Collider2D collision) {
         // Bullet is destroyed unless there's a collision
-        // with the entity who shot the bullet
-        if (!collision.CompareTag(m_owner))
+        // with the entity who shot the bullet or if it's colliding with another bullet
+        if (!collision.CompareTag(m_owner) && !collision.CompareTag("Untagged"))
             Destroy(gameObject);
     }
 
