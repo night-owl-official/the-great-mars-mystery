@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour
     public Transform shootingPoint;
     public LineRenderer bulletEffect;
 
+    public int damage = 50;
+
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -24,7 +26,12 @@ public class Weapon : MonoBehaviour
         //If anything is hit with the ray and it is not null
         if(hit)
         {
-            Debug.Log(hit.transform.name);
+            EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
+
+            if(enemy)
+            {
+                enemy.TakeDamage(damage);
+            }
 
             bulletEffect.SetPosition(0,shootingPoint.position);
             bulletEffect.SetPosition(1,hit.point);
