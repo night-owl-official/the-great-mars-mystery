@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour {
         // Retrieve the user's input with a value between -1 and 1
         m_hInput = Input.GetAxisRaw("Horizontal");
         m_vInput = Input.GetAxisRaw("Vertical");
+
+        // Get the mouse position in world coordinates, ignore the z axis
+        m_worldMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     // Called once every Physics update
@@ -27,6 +30,16 @@ public class PlayerMovement : MonoBehaviour {
         m_rb.MovePosition(m_rb.position +
             new Vector2(m_hInput, m_vInput).normalized * m_speed *
             Time.fixedDeltaTime);
+
+        // Vector from the player to the mouse position
+        Vector2 playerToMouse = m_worldMousePos - m_rb.position;
+        // Find the angle between the horizontal axis and the vector
+        // pointing in the direction where the mouse is
+        // The angle is then converted into degrees and given an 90 degrees offset
+        // to make sure it's perfectly aligned with the mouse position
+        float lookAngle = Mathf.Atan2(playerToMouse.y, playerToMouse.x) * Mathf.Rad2Deg - 90f;
+
+        m_rb.rotation = lookAngle;
     }
     #endregion
 
@@ -38,5 +51,6 @@ public class PlayerMovement : MonoBehaviour {
 
     private float m_hInput;
     private float m_vInput;
+    private Vector2 m_worldMousePos;
     #endregion
 }
