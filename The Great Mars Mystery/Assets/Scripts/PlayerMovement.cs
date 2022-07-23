@@ -31,6 +31,13 @@ public class PlayerMovement : MonoBehaviour {
             new Vector2(m_hInput, m_vInput).normalized * m_speed *
             Time.fixedDeltaTime);
 
+        ApplyRotation();
+    }
+
+    /// <summary>
+    /// Calculates the rotation angle and applies it to the rigidbody.
+    /// </summary>
+    private void ApplyRotation() {
         // Vector from the player to the mouse position
         Vector2 playerToMouse = m_worldMousePos - m_rb.position;
         // Find the angle between the horizontal axis and the vector
@@ -39,13 +46,18 @@ public class PlayerMovement : MonoBehaviour {
         // to make sure it's perfectly aligned with the mouse position
         float lookAngle = Mathf.Atan2(playerToMouse.y, playerToMouse.x) * Mathf.Rad2Deg - 90f;
 
-        m_rb.rotation = lookAngle;
+        // Apply some smoothing when rotating the character
+        m_rb.rotation = Mathf.LerpAngle(m_rb.rotation, lookAngle, m_rotationSmoothing);
     }
     #endregion
 
     #region Member variables
     [SerializeField]
     private float m_speed = 1f;
+
+    [SerializeField]
+    [Range(0.05f, 0.5f)]
+    private float m_rotationSmoothing = 0.2f;
 
     private Rigidbody2D m_rb;
 
