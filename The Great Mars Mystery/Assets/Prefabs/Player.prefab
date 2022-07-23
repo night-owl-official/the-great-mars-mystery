@@ -157,3 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0bb86cf01c957546b105c030b27cabf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_bulletPrefab: {fileID: 0}
+  m_bulletSpawnPoint: {x: 0, y: 0}
+  m_bulletSpeed: 100

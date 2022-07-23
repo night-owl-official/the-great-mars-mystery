@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         // Bullet is destroyed unless there's a collision
         // with the entity who shot the bullet or if it's colliding with another bullet
-        if (!collision.CompareTag(m_owner) && !collision.CompareTag("Untagged"))
+        if (!collision.CompareTag(m_owner) && !collision.CompareTag(tag))
             Destroy(gameObject);
     }
 
