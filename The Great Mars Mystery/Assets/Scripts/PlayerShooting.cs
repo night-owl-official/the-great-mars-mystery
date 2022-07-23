@@ -5,13 +5,14 @@ public class PlayerShooting : MonoBehaviour {
     #region Methods
     // Called once per frame
     private void Update() {
-        // Shoot a bullet when the user presses the left mouse button
-        if (Input.GetMouseButtonDown(0)) {
+        // Shoot a bullet when the user presses the fire button
+        // which is typically lft mouse button
+        if (Input.GetButtonDown("Fire1")) {
             Bullet bullet = SpawnBullet();
 
             // Add a force to the bullet in the player's up direction (forward)
             Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
-            bulletRigidbody.AddForce(transform.up * m_bulletSpeed);
+            bulletRigidbody.AddForce(transform.up * m_bulletSpeed, ForceMode2D.Impulse);
         }
     }
 
@@ -24,11 +25,11 @@ public class PlayerShooting : MonoBehaviour {
         // to the local player's sideways (right)
         Vector2 startingPosition =
             (Vector2)transform.position +
-            (new Vector2(m_bulletSpawnPoint.x, 0f) * transform.right);
+            (new Vector2(m_bulletFirePoint.x, 0f) * transform.right);
 
         // The offset on the vertical axis relative the local player's forward (up)
         Vector2 forwardOffset =
-            new Vector2(m_bulletSpawnPoint.y, m_bulletSpawnPoint.y) * transform.up;
+            new Vector2(m_bulletFirePoint.y, m_bulletFirePoint.y) * transform.up;
 
         // The bullet rotation based on the player's rotation
         Quaternion finalRotation =
@@ -53,10 +54,10 @@ public class PlayerShooting : MonoBehaviour {
     private Bullet m_bulletPrefab;
 
     [SerializeField]
-    [Tooltip("The forward offset from the player where the bullet will spawn")]
-    private Vector2 m_bulletSpawnPoint = new Vector2(0.015f, 0.2f);
+    [Tooltip("The offset from the player where the bullet will be fired from")]
+    private Vector2 m_bulletFirePoint = new Vector2(0.015f, 0.2f);
 
     [SerializeField]
-    private float m_bulletSpeed = 20f;
+    private float m_bulletSpeed = 2f;
     #endregion
 }

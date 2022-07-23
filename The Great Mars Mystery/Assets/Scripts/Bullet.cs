@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
 
+/*
+ * It's important to set the bullet owner
+ * everytime a bullet is instantiated
+ * for the shooter to avoid hitting themselves
+ */
+
 // Make sure the Player movement has access to Rigidbody and Collider
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -17,10 +23,10 @@ public class Bullet : MonoBehaviour {
     }
 
     // Runs when the collider enters a trigger collision
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerEnter2D(Collider2D other) {
         // Bullet is destroyed unless there's a collision
         // with the entity who shot the bullet or if it's colliding with another bullet
-        if (!collision.CompareTag(m_owner) && !collision.CompareTag(tag))
+        if (!other.CompareTag(m_owner) && !other.CompareTag(tag))
             Destroy(gameObject);
     }
 
