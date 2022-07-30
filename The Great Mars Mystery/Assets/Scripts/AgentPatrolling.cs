@@ -5,8 +5,6 @@ public class AgentPatrolling : MonoBehaviour {
     #region Methods
     // Called once at the start of the game
     private void Start() {
-        m_rb = GetComponent<Rigidbody2D>();
-
         // At the start the rotations are the same
         m_rbRotationLastFrame = m_rb.rotation;
 
