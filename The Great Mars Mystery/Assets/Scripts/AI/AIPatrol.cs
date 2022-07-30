@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-// Make sure the Player movement has access to Rigidbody and Collider
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
 public class AIPatrol : MonoBehaviour {
     #region Methods
     // Called once at the start of the game
