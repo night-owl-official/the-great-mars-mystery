@@ -35,7 +35,7 @@ public class AgentPatrolling : MonoBehaviour {
     /// </summary>
     private IEnumerator InitiatePatrol() {
         // Keep patrolling until told otherwise
-        while (m_isPatrolling)
+        while (true)
             // Start the coroutine once it has finished running
             yield return StartCoroutine(FaceAndMoveToNextWaypoint());
     }
@@ -49,12 +49,12 @@ public class AgentPatrolling : MonoBehaviour {
 
         // Rotate to face the next waypoint
         // Loop until the agent is done rotating
-        while (m_enemyMovement.IsStillRotating()) {
+        do {
             m_enemyMovement.RotateToFaceMoveDirection();
 
             // Wait until next frame to run the loop again
             yield return null;
-        }
+        } while (m_enemyMovement.IsStillRotating());
 
         // Move to the next waypoint
         // Loop until our position reaches the desired position
@@ -96,6 +96,5 @@ public class AgentPatrolling : MonoBehaviour {
 
     private EnemyMovement m_enemyMovement = null;
     private int m_currentWaypoint = 0;
-    private bool m_isPatrolling = true;
     #endregion
 }
