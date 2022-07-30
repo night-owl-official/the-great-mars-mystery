@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class AIPatrol : MonoBehaviour {
+public class AgentPatrolling : MonoBehaviour {
     #region Methods
     // Called once at the start of the game
     private void Start() {
