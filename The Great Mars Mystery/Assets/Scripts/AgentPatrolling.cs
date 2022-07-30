@@ -1,12 +1,30 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+// Make sure the agent patrolling has access to enemy movement component
+[RequireComponent(typeof(EnemyMovement))]
 public class AgentPatrolling : MonoBehaviour {
+
     #region Methods
-    // Called once at the start of the game
+    // Called once at the start
     private void Start() {
-        // At the start the rotations are the same
-        m_rbRotationLastFrame = m_rb.rotation;
+        m_enemyMovement = GetComponent<EnemyMovement>();
+    }
+
+    // Called once every frame
+    private void Update() {
+        // Set the movement direction every frame
+        // to make sure we always have the updated direction
+        m_enemyMovement.SetMovementDirection(m_waypoints[m_currentWaypoint]);
+    }
+
+    /// <summary>
+    /// Starts the patrol coroutines.
+    /// </summary>
+    public void StartPatrol() {
+        // Can't patrol without enemy movement
+        if (!m_enemyMovement)
+            return;
 
         // Start patrolling
         StartCoroutine(InitiatePatrol());
@@ -29,30 +47,19 @@ public class AgentPatrolling : MonoBehaviour {
         // Wait before facing the next waypoint
         yield return new WaitForSeconds(2.5f);
 
-        // Get the movement direction from the current position to the next waypoint
-        Vector2 faceDirection =
-            m_waypoints[m_currentWaypoint] - m_rb.position;
-        // Calculate the facing rotation angle
-        float lookAngle = Mathf.Atan2(faceDirection.y, faceDirection.x) * Mathf.Rad2Deg;
-
         // Rotate to face the next waypoint
         // Loop until the agent is done rotating
-        do {
-            // Update last frame rotation
-            m_rbRotationLastFrame = m_rb.rotation;
-
-            // Apply some smoothing when rotating the character
-            m_rb.rotation = Mathf.LerpAngle(m_rb.rotation, lookAngle, m_turnSmoothing);
+        while (m_enemyMovement.IsStillRotating()) {
+            m_enemyMovement.RotateToFaceMoveDirection();
 
             // Wait until next frame to run the loop again
             yield return null;
-        } while (!Mathf.Approximately(m_rb.rotation, m_rbRotationLastFrame));
+        }
 
         // Move to the next waypoint
         // Loop until our position reaches the desired position
         while (!IsSwitchingWaypoints()) {
-            m_rb.MovePosition(m_rb.position + faceDirection.normalized *
-                m_walkSpeed * Time.deltaTime);
+            m_enemyMovement.MoveToDestination();
 
             // Wait until next frame to run the loop again
             yield return null;
@@ -64,10 +71,10 @@ public class AgentPatrolling : MonoBehaviour {
     /// </summary>
     /// <returns>True if there's a new waypoint set, false otherwise.</returns>
     private bool IsSwitchingWaypoints() {
-        float dist =
-            Vector2.Distance(m_waypoints[m_currentWaypoint], m_rb.position);
-
-        bool isDistanceLessThanStoppingDistance = dist < m_stoppingDistance;
+        // Is our distance from the waypoint less than the stopping distance?
+        bool isDistanceLessThanStoppingDistance =
+            m_enemyMovement.DistanceFromDestination(m_waypoints[m_currentWaypoint]) <
+            m_stoppingDistance;
 
         // Switch to the next waypoint after the current one has been explored
         if (isDistanceLessThanStoppingDistance)
@@ -81,21 +88,14 @@ public class AgentPatrolling : MonoBehaviour {
 
     #region Memeber variables
     [SerializeField]
-    private float m_walkSpeed = 0.6f;
-
-    [SerializeField]
-    private float m_turnSmoothing = 0.02f;
-
-    [SerializeField]
     [Tooltip("How far this AI will stop from the waypoint")]
     private float m_stoppingDistance = 0.2f;
 
     [SerializeField]
     private Vector2[] m_waypoints;
 
+    private EnemyMovement m_enemyMovement = null;
     private int m_currentWaypoint = 0;
     private bool m_isPatrolling = true;
-    private float m_rbRotationLastFrame = 0f;
-    private Rigidbody2D m_rb;
     #endregion
 }

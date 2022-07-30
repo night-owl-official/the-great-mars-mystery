@@ -9,11 +9,17 @@ public class EnemyMovement : MonoBehaviour {
     // Called once at the start
     private void Start() {
         m_rb = GetComponent<Rigidbody2D>();
+
+        // At the start the rotations are the same
+        m_rbRotationLastFrame = m_rb.rotation;
     }
 
-    // Setter for movement direction
-    public Vector2 MovementDirection {
-        set { m_movementDirection = value; }
+    /// <summary>
+    /// Sets the movement direction.
+    /// </summary>
+    /// <param name="destination">The destination for the enemy to reach.</param>
+    public void SetMovementDirection(Vector2 destination) {
+        m_movementDirection = destination - m_rb.position;
     }
 
     /// <summary>
@@ -29,6 +35,9 @@ public class EnemyMovement : MonoBehaviour {
     /// Calculates the rotation angle and applies it to the rigidbody.
     /// </summary>
     public void RotateToFaceMoveDirection() {
+        // Update last frame rotation
+        m_rbRotationLastFrame = m_rb.rotation;
+
         // Find the angle between the horizontal axis and the vector
         // pointing in the direction the enemy should face
         // The angle is then converted into degrees
@@ -38,6 +47,25 @@ public class EnemyMovement : MonoBehaviour {
 
         // Apply some smoothing when rotating the character
         m_rb.rotation = Mathf.LerpAngle(m_rb.rotation, lookAngle, m_rotationSmoothing);
+    }
+
+    /// <summary>
+    /// Checks whether the enemy is still rotating.
+    /// </summary>
+    /// <returns>True if the enemy is still rotating, false otherwise.</returns>
+    public bool IsStillRotating() {
+        // Enemy is still rotating when the rotation last frame
+        // is different from the rotation this frame
+        return !Mathf.Approximately(m_rbRotationLastFrame, m_rb.rotation);
+    }
+
+    /// <summary>
+    /// Calculates the distance from the enemy's rigidbody to the given destination
+    /// </summary>
+    /// <param name="destination">The destination the enemy is trying to reach.</param>
+    /// <returns></returns>
+    public float DistanceFromDestination(Vector2 destination) {
+        return Vector2.Distance(destination, m_rb.position);
     }
     #endregion
 
@@ -51,5 +79,6 @@ public class EnemyMovement : MonoBehaviour {
 
     private Rigidbody2D m_rb = null;
     Vector2 m_movementDirection = Vector2.zero;
+    float m_rbRotationLastFrame = 0f;
     #endregion
 }
