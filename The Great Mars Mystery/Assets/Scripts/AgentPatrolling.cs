@@ -15,7 +15,7 @@ public class AgentPatrolling : MonoBehaviour {
     private void Update() {
         // Set the movement direction every frame
         // to make sure we always have the updated direction
-        m_enemyMovement.SetMovementDirection(m_waypoints[m_currentWaypoint]);
+        m_enemyMovement.UpdateMovementDirection(m_waypoints[m_currentWaypoint]);
     }
 
     /// <summary>

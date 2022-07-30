@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour {
     /// Sets the movement direction.
     /// </summary>
     /// <param name="destination">The destination for the enemy to reach.</param>
-    public void SetMovementDirection(Vector2 destination) {
+    public void UpdateMovementDirection(Vector2 destination) {
         m_movementDirection = destination - m_rb.position;
     }
 

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1744496743433488642}
   - component: {fileID: 1744496743433488643}
   - component: {fileID: 1744496743433488640}
+  - component: {fileID: -2766360702333117364}
   - component: {fileID: -6131697162260634935}
   - component: {fileID: 1744496743433488641}
   m_Layer: 0
@@ -72,6 +73,18 @@ CircleCollider2D:
   m_Offset: {x: -0.044968218, y: -0.004734516}
   serializedVersion: 2
   m_Radius: 0.114144355
+--- !u!114 &-2766360702333117364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744496743433488646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f6da1bccc1402468ed72d723fba68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-6131697162260634935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,8 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0184b7e68f213af49971fa683c4188e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_walkSpeed: 0.6
-  m_turnSmoothing: 0.02
   m_stoppingDistance: 0.2
   m_waypoints:
   - {x: -1.4, y: 0.6}
