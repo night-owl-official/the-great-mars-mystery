@@ -11,11 +11,10 @@ public class AgentPatrolling : MonoBehaviour {
         m_enemyMovement = GetComponent<EnemyMovement>();
     }
 
-    // Called once every frame
-    private void Update() {
-        // Set the movement direction every frame
-        // to make sure we always have the updated direction
-        m_enemyMovement.UpdateMovementDirection(m_waypoints[m_currentWaypoint]);
+    // Getter and Setter for patrol flag
+    public bool IsPatrolling {
+        get => m_isPatrolling;
+        set => m_isPatrolling = value;
     }
 
     /// <summary>
@@ -35,21 +34,30 @@ public class AgentPatrolling : MonoBehaviour {
     /// </summary>
     private IEnumerator InitiatePatrol() {
         // Keep patrolling until told otherwise
-        while (true)
+        while (true) {
+            // Stop coroutine when not in patrol
+            if (!m_isPatrolling)
+                yield break;
+
             // Start the coroutine once it has finished running
             yield return StartCoroutine(FaceAndMoveToNextWaypoint());
+        }
     }
 
     /// <summary>
     /// Coroutine for the patrolling session.
     /// </summary>
     private IEnumerator FaceAndMoveToNextWaypoint() {
-        // Wait before facing the next waypoint
-        yield return new WaitForSeconds(2.5f);
+        // Update the movement direction
+        m_enemyMovement.UpdateMovementDirection(m_waypoints[m_currentWaypoint]);
 
         // Rotate to face the next waypoint
         // Loop until the agent is done rotating
         do {
+            // Stop coroutine when not in patrol
+            if (!m_isPatrolling)
+                yield break;
+
             m_enemyMovement.RotateToFaceMoveDirection();
 
             // Wait until next frame to run the loop again
@@ -59,11 +67,22 @@ public class AgentPatrolling : MonoBehaviour {
         // Move to the next waypoint
         // Loop until our position reaches the desired position
         while (!IsSwitchingWaypoints()) {
+            // Stop coroutine when not in patrol
+            if (!m_isPatrolling)
+                yield break;
+
             m_enemyMovement.MoveToDestination();
 
             // Wait until next frame to run the loop again
             yield return null;
         }
+
+        // Stop coroutine when not in patrol
+        if (!m_isPatrolling)
+            yield break;
+
+        // Wait before facing the next waypoint
+        yield return new WaitForSeconds(m_timeToWaitAtWaypoint);
     }
 
     /// <summary>
@@ -92,9 +111,14 @@ public class AgentPatrolling : MonoBehaviour {
     private float m_stoppingDistance = 0.2f;
 
     [SerializeField]
+    [Tooltip("Time, in seconds, to wait before moving to the next waypoint")]
+    private float m_timeToWaitAtWaypoint = 2.5f;
+
+    [SerializeField]
     private Vector2[] m_waypoints;
 
     private EnemyMovement m_enemyMovement = null;
     private int m_currentWaypoint = 0;
+    private bool m_isPatrolling = false;
     #endregion
 }

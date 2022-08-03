@@ -9,20 +9,36 @@ public enum EnemyState {
     Die
 }
 
-// Make sure we have access to AgentPatrolling
+// Make sure we have access to AgentPatrolling, AgentChasing
 [RequireComponent(typeof(AgentPatrolling))]
+[RequireComponent(typeof(AgentChasing))]
 public class EnemyController : MonoBehaviour {
 
     #region Methods
     // Called once at the start
     private void Start() {
         m_agentPatrolling = GetComponent<AgentPatrolling>();
-        m_currentState = EnemyState.Patrol;
+        m_agentChasing = GetComponent<AgentChasing>();
     }
 
     // Called once every frame
     private void Update() {
+        HandleStateSwitchingLogic();
         HandleStateMachine();
+    }
+
+    /// <summary>
+    /// Switches the current enemy state based on certain conditions.
+    /// </summary>
+    private void HandleStateSwitchingLogic() {
+        // Set the state to chasing when the agent
+        // meets the conditions for a chase, patrol otherwise
+        if (m_agentChasing.IsChasing())
+            m_currentState = EnemyState.Chase;
+        else
+            m_currentState = EnemyState.Patrol;
+
+        // Further logic to switch to different states will be added here
     }
 
     /// <summary>
@@ -38,27 +54,26 @@ public class EnemyController : MonoBehaviour {
                     break;
 
                 // Initiate patrol state
-                if (!m_isPatrolling) {
+                if (!m_agentPatrolling.IsPatrolling) {
+                    m_agentPatrolling.IsPatrolling = true;
                     m_agentPatrolling.StartPatrol();
-                    m_isPatrolling = true;
                 }
                 break;
             case EnemyState.Chase:
-                // Stop patrolling
-                m_isPatrolling = false;
+                // Need to have a ref to agent chasing
+                if (!m_agentChasing)
+                    break;
 
-                // To be inserted
+                // Stop patrolling
+                m_agentPatrolling.IsPatrolling = false;
+
+                // Initiate chase state
+                m_agentChasing.InitiateChase();
                 break;
             case EnemyState.Attack:
-                // Stop patrolling
-                m_isPatrolling = false;
-
                 // To be inserted
                 break;
             case EnemyState.Die:
-                // Stop patrolling
-                m_isPatrolling = false;
-
                 // To be inserted
                 break;
         }
@@ -68,7 +83,6 @@ public class EnemyController : MonoBehaviour {
     #region Member variables
     private EnemyState m_currentState = EnemyState.None;
     private AgentPatrolling m_agentPatrolling = null;
-
-    private bool m_isPatrolling = false;
+    private AgentChasing m_agentChasing = null;
     #endregion
 }

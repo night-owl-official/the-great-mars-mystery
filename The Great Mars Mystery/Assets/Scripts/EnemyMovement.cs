@@ -26,15 +26,17 @@ public class EnemyMovement : MonoBehaviour {
     /// Tells the rigidbody to move in the given direction
     /// at the desired speed.
     /// </summary>
-    public void MoveToDestination() {
+    /// <param name="runMultiplier">A multiplier that increases the movement speed.</param>
+    public void MoveToDestination(float runMultiplier = 1f) {
         m_rb.MovePosition(m_rb.position + m_movementDirection.normalized *
-                m_walkSpeed * Time.deltaTime);
+                m_walkSpeed * Time.deltaTime * runMultiplier);
     }
 
     /// <summary>
     /// Calculates the rotation angle and applies it to the rigidbody.
     /// </summary>
-    public void RotateToFaceMoveDirection() {
+    /// <param name="runMultiplier">A multiplier that increases the rotation speed.</param>
+    public void RotateToFaceMoveDirection(float runMultiplier = 1f) {
         // Update last frame rotation
         m_rbRotationLastFrame = m_rb.rotation;
 
@@ -46,7 +48,8 @@ public class EnemyMovement : MonoBehaviour {
             Mathf.Atan2(m_movementDirection.y, m_movementDirection.x) * Mathf.Rad2Deg;
 
         // Apply some smoothing when rotating the character
-        m_rb.rotation = Mathf.LerpAngle(m_rb.rotation, lookAngle, m_rotationSmoothing);
+        m_rb.rotation =
+            Mathf.LerpAngle(m_rb.rotation, lookAngle, m_rotationSmoothing * runMultiplier);
     }
 
     /// <summary>
@@ -63,7 +66,7 @@ public class EnemyMovement : MonoBehaviour {
     /// Calculates the distance from the enemy's rigidbody to the given destination
     /// </summary>
     /// <param name="destination">The destination the enemy is trying to reach.</param>
-    /// <returns></returns>
+    /// <returns>The distance between the enemy and the destination.</returns>
     public float DistanceFromDestination(Vector2 destination) {
         return Vector2.Distance(destination, m_rb.position);
     }
