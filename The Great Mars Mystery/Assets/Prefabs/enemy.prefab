@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1407291113660484376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7592296766324191874}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7592296766324191874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407291113660484376}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.168, y: 0.081, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1744496743433488642}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &1744496743433488646
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,9 +45,10 @@ GameObject:
   - component: {fileID: -6131697162260634935}
   - component: {fileID: 1744496743433488641}
   - component: {fileID: -1119209308795833479}
+  - component: {fileID: -1095912481574216255}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,6 +65,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4485702781127697258}
+  - {fileID: 7592296766324191874}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -71,9 +103,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.044968218, y: -0.004734516}
+  m_Offset: {x: -0.043324433, y: -0.005556509}
   serializedVersion: 2
-  m_Radius: 0.114144355
+  m_Radius: 0.1050869
 --- !u!114 &-2766360702333117364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_stoppingDistance: 0.2
+  m_timeToWaitAtWaypoint: 2.5
   m_waypoints:
   - {x: -1.4, y: 0.6}
   - {x: 1.4, y: -0.6}
@@ -130,7 +163,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_target: {fileID: 0}
   m_chaseThreshold: 3
-  m_getawayThreshold: 5
+--- !u!114 &-1095912481574216255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744496743433488646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937ec90b6e26a56459f17872679a96b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isMelee: 0
+  m_bulletPrefab: {fileID: 0}
+  m_bulletFirePoint: {fileID: 0}
+  m_bulletSpeed: 2
+  m_bulletRotationZOffset: 0
 --- !u!1 &8396797647512067764
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +204,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8396797647512067764}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

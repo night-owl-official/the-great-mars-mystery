@@ -9,9 +9,10 @@ public enum EnemyState {
     Die
 }
 
-// Make sure we have access to AgentPatrolling, AgentChasing
+// Make sure we have access to AgentPatrolling, AgentChasing, EnemyAttacking
 [RequireComponent(typeof(AgentPatrolling))]
 [RequireComponent(typeof(AgentChasing))]
+[RequireComponent(typeof(EnemyAttacking))]
 public class EnemyController : MonoBehaviour {
 
     #region Methods
@@ -19,11 +20,14 @@ public class EnemyController : MonoBehaviour {
     private void Start() {
         m_agentPatrolling = GetComponent<AgentPatrolling>();
         m_agentChasing = GetComponent<AgentChasing>();
+        m_enemyAttacking = GetComponent<EnemyAttacking>();
+
+        m_currentState = EnemyState.Attack;
     }
 
     // Called once every frame
     private void Update() {
-        HandleStateSwitchingLogic();
+        //HandleStateSwitchingLogic();
         HandleStateMachine();
     }
 
@@ -71,7 +75,11 @@ public class EnemyController : MonoBehaviour {
                 m_agentChasing.InitiateChase();
                 break;
             case EnemyState.Attack:
-                // To be inserted
+                // Need to have a ref to enemy attacking
+                if (!m_enemyAttacking)
+                    break;
+
+                m_enemyAttacking.InitiateAttack();
                 break;
             case EnemyState.Die:
                 // To be inserted
@@ -84,5 +92,6 @@ public class EnemyController : MonoBehaviour {
     private EnemyState m_currentState = EnemyState.None;
     private AgentPatrolling m_agentPatrolling = null;
     private AgentChasing m_agentChasing = null;
+    private EnemyAttacking m_enemyAttacking = null;
     #endregion
 }

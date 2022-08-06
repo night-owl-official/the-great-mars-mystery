@@ -306,6 +306,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &945199626 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7592296766324191874, guid: 751a70192f6dee24ea17840ada3ef116,
+    type: 3}
+  m_PrefabInstance: {fileID: 1744496744987030557}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1178518916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2582240339682489089, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
@@ -333,6 +339,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_getawayThreshold
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1095912481574216255, guid: 751a70192f6dee24ea17840ada3ef116,
+        type: 3}
+      propertyPath: m_fireRate
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -1095912481574216255, guid: 751a70192f6dee24ea17840ada3ef116,
+        type: 3}
+      propertyPath: m_bulletPrefab
+      value: 
+      objectReference: {fileID: 6785831894633440310, guid: 78e1061305d49b946976cd6e3a3bff29,
+        type: 3}
+    - target: {fileID: -1095912481574216255, guid: 751a70192f6dee24ea17840ada3ef116,
+        type: 3}
+      propertyPath: m_bulletFirePoint
+      value: 
+      objectReference: {fileID: 945199626}
+    - target: {fileID: -1095912481574216255, guid: 751a70192f6dee24ea17840ada3ef116,
+        type: 3}
+      propertyPath: m_bulletRotationZOffset
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 1744496743433488642, guid: 751a70192f6dee24ea17840ada3ef116,
         type: 3}
@@ -394,6 +421,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1744496743433488646, guid: 751a70192f6dee24ea17840ada3ef116,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592296766324191874, guid: 751a70192f6dee24ea17840ada3ef116,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.184
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 751a70192f6dee24ea17840ada3ef116, type: 3}
 --- !u!1001 &2582240338819631921
@@ -407,6 +444,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582240339682489089, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2582240339682489092, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
         type: 3}
