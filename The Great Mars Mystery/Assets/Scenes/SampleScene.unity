@@ -333,12 +333,17 @@ PrefabInstance:
     - target: {fileID: -1119209308795833479, guid: 751a70192f6dee24ea17840ada3ef116,
         type: 3}
       propertyPath: m_chaseThreshold
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: -1119209308795833479, guid: 751a70192f6dee24ea17840ada3ef116,
         type: 3}
       propertyPath: m_getawayThreshold
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1095912481574216255, guid: 751a70192f6dee24ea17840ada3ef116,
+        type: 3}
+      propertyPath: m_isMelee
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1095912481574216255, guid: 751a70192f6dee24ea17840ada3ef116,
         type: 3}
@@ -356,6 +361,11 @@ PrefabInstance:
       propertyPath: m_bulletFirePoint
       value: 
       objectReference: {fileID: 945199626}
+    - target: {fileID: -1095912481574216255, guid: 751a70192f6dee24ea17840ada3ef116,
+        type: 3}
+      propertyPath: m_hittingThreshold
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: -1095912481574216255, guid: 751a70192f6dee24ea17840ada3ef116,
         type: 3}
       propertyPath: m_bulletRotationZOffset
