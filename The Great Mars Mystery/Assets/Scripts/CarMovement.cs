@@ -7,7 +7,6 @@
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class CarMovement : MonoBehaviour {
-
     #region Methods
     // Called once at the start
     private void Start() {
