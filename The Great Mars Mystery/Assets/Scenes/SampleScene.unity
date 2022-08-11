@@ -686,6 +686,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2693201866547565341, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
         type: 3}
+      propertyPath: m_bulletFirePoint
+      value: 
+      objectReference: {fileID: 2582240338819631922}
+    - target: {fileID: 2693201866547565341, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
+        type: 3}
       propertyPath: m_bulletSpawnPoint.x
       value: 0.015
       objectReference: {fileID: 0}
@@ -694,5 +699,16 @@ PrefabInstance:
       propertyPath: m_bulletSpawnPoint.y
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2693201866547565341, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
+        type: 3}
+      propertyPath: m_bulletRotationZOffset
+      value: 270
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88e0a2b7aaa9ab545b98488d1865e27d, type: 3}
+--- !u!4 &2582240338819631922 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4314219148943523656, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2582240338819631921}
+  m_PrefabAsset: {fileID: 0}
