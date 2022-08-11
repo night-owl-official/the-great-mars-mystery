@@ -2,7 +2,7 @@
 
 // Make sure the Player movement has access to Rigidbody and Collider
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(Collider2D))]
 public class PlayerMovement : MonoBehaviour {
 
     #region Methods
