@@ -91,17 +91,21 @@ public class AgentPatrolling : MonoBehaviour {
     /// <returns>True if there's a new waypoint set, false otherwise.</returns>
     private bool IsSwitchingWaypoints() {
         // Is our distance from the waypoint less than the stopping distance?
-        bool isDistanceLessThanStoppingDistance =
+        bool hasReachedWaypoint =
             m_enemyMovement.DistanceFromDestination(m_waypoints[m_currentWaypoint]) <
             m_stoppingDistance;
 
+        // Is there an obstacle in the way to the next waypoint?
+        bool isObstacleInTheWay = m_enemyMovement.CheckForObstaclesInLineOfSight();
+
         // Switch to the next waypoint after the current one has been explored
-        if (isDistanceLessThanStoppingDistance)
+        // or if there's an obstacle blocking the way
+        if (hasReachedWaypoint || isObstacleInTheWay)
             // Move onto the next waypoint in the list and loop back around
             // to the first waypoint when the last is reached
             m_currentWaypoint = (m_currentWaypoint + 1) % m_waypoints.Length;
 
-        return isDistanceLessThanStoppingDistance;
+        return hasReachedWaypoint || isObstacleInTheWay;
     }
     #endregion
 

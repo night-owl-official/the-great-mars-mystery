@@ -23,10 +23,6 @@ public class EnemyAttacking : MonoBehaviour {
     /// Decides whether to launch a melee or ranged attack based on the type of enemy
     /// </summary>
     public void InitiateAttack() {
-        // Don't execute if not in attack state
-        if (!m_isAttacking)
-            return;
-
         // Only attack when possible
         if (m_canAttack)
             StartCoroutine(PerformAttack());

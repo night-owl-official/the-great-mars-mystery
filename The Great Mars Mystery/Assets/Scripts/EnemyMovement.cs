@@ -23,6 +23,81 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     /// <summary>
+    /// Checks whether the target is in the enemy's line of sight
+    /// unobstructed by obstacles.
+    /// </summary>
+    /// <param name="targetMask">The layer mask used for the target physics layer.</param>
+    /// <returns>True if the target is in sight, false otherwise.</returns>
+    public bool CheckForTargetInLineOfSight(LayerMask targetMask) {
+        // Find the target if it's present within the given enemy's view radius
+        Collider2D targetCollider =
+            Physics2D.OverlapCircle(transform.position, m_viewRadius, targetMask);
+
+        // Target is within the view radius
+        if (targetCollider) {
+            // Vector from enemy position to the target's position
+            Vector2 directionToTarget =
+                (targetCollider.transform.position - transform.position).normalized;
+
+            // Calculate the angle between the enemy's "forward" vector
+            // and the target's positional vector
+            float angle =
+                Vector2.Angle(m_isForwardUp ? transform.up : transform.right, directionToTarget);
+
+            // Check if the angle is within the enemy's view cone
+            if (angle < m_viewConeAngle / 2f) {
+                // When the target is in the view cone but hidden
+                // behind an obstacle then it's as if the enemy doesn't see
+                // the target, it does see it otherwise
+                return !CheckForObstaclesInLineOfSight(targetCollider.transform);
+            }
+        }
+
+        // Target's not in the view radius
+        // nor is it in the view cone
+        return false;
+    }
+
+    /// <summary>
+    /// Uses raycasting to check for obstacle in the way.
+    /// </summary>
+    /// <param name="target">The enemy's target that could be in the view cone.</param>
+    /// <returns>True if there's an obstacle in the way, false otherwise.</returns>
+    public bool CheckForObstaclesInLineOfSight(Transform target = null) {
+        float rayDistance = m_lineOfSightRange;
+        Vector2 rayDirection = m_isForwardUp ? transform.up : transform.right;
+
+        // When the target parameter is set
+        // we want the ray to reach the target.
+        if (target) {
+            rayDirection = (target.position - transform.position).normalized;
+            rayDistance = Vector2.Distance(transform.position, target.position);
+        }
+
+        // Cast a ray in the enemy's forward direction, either y or x axis,
+        // that goes as far as the given line of sight range or the target's position.
+        RaycastHit2D hit =
+            Physics2D.Raycast(transform.position,
+                rayDirection,
+                rayDistance,
+                m_lineOfSightBlockerMask);
+
+        // When debug is checked, visualize line of sight
+        if (m_visualizeLineOfSight)
+            Debug.DrawRay(transform.position,
+                m_isForwardUp ? transform.up : transform.right *
+                rayDistance,
+                Color.green);
+
+        // Obstacle was hit
+        if (hit.collider)
+            return true;
+
+        // Nothing was hit
+        return false;
+    }
+
+    /// <summary>
     /// Tells the rigidbody to move in the given direction
     /// at the desired speed.
     /// </summary>
@@ -73,12 +148,42 @@ public class EnemyMovement : MonoBehaviour {
     #endregion
 
     #region Member variables
+    [Header("Movement")]
+
     [SerializeField]
     private float m_walkSpeed = 0.6f;
 
     [SerializeField]
     [Range(0.01f, 0.1f)]
     private float m_rotationSmoothing = 0.02f;
+
+    [SerializeField]
+    [Tooltip("Is the enemy's forward vector the y axis?")]
+    private bool m_isForwardUp = true;
+
+    [Header("Sight")]
+    [Space]
+
+    [SerializeField]
+    private float m_viewRadius = 3f;
+
+    [SerializeField]
+    [Tooltip("The view cone representing the enemy's FOV. In degrees")]
+    [Range(0f, 360f)]
+    private float m_viewConeAngle = 90f;
+
+    [SerializeField]
+    [Tooltip("How far the enemy can see ahead")]
+    private float m_lineOfSightRange = 1.5f;
+
+    [SerializeField]
+    [Tooltip("Physics layers that can intercept the line of sight")]
+    private LayerMask m_lineOfSightBlockerMask;
+
+    [Header("Debug")]
+
+    [SerializeField]
+    private bool m_visualizeLineOfSight = false;
 
     private Rigidbody2D m_rb = null;
     Vector2 m_movementDirection = Vector2.zero;

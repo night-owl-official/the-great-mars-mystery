@@ -45,6 +45,16 @@ public class AgentChasing : MonoBehaviour {
         if (!m_enemyMovement || !m_enemyAttacking || !m_target)
             return;
 
+        // Can't chase nor attack if we don't have clear line of sight to the target
+        if (!m_enemyMovement.CheckForTargetInLineOfSight(m_targetMask)) {
+            // Reset chase and attack flags in case they were set
+            // in a past chase
+            m_isChasing = false;
+            m_enemyAttacking.IsAttacking = false;
+
+            return;
+        }
+
         // Get the distance to the target
         float distToTarget =
             m_enemyMovement.DistanceFromDestination(m_target.transform.position);
@@ -78,6 +88,9 @@ public class AgentChasing : MonoBehaviour {
     #region Member variables
     [SerializeField]
     private GameObject m_target = null;
+
+    [SerializeField]
+    private LayerMask m_targetMask;
 
     [SerializeField]
     [Tooltip("How far from the target to initiate chase. In meters")]
