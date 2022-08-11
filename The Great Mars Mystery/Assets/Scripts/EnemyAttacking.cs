@@ -22,10 +22,15 @@ public class EnemyAttacking : MonoBehaviour {
     /// <summary>
     /// Decides whether to launch a melee or ranged attack based on the type of enemy
     /// </summary>
-    public void InitiateAttack() {
+    /// <param name="target">This enemy's target.</param>
+    public void InitiateAttack(GameObject target) {
         // Only attack when possible
-        if (m_canAttack)
+        if (m_canAttack) {
+            // Set the target health if it has one
+            m_currentTargetHealth = target.GetComponent<Health>();
+
             StartCoroutine(PerformAttack());
+        }
     }
 
     private IEnumerator PerformAttack() {
@@ -42,9 +47,11 @@ public class EnemyAttacking : MonoBehaviour {
 
         // Choose ranged or melee based on the melee flag
         if (m_isMelee)
-            Debug.Log("Hit Target");
-        else
-            FireBullet();
+            // If our target has a health component
+            // deal damage to it
+            m_currentTargetHealth?.DeductHPs(m_meleeDamage);
+            else
+                FireBullet();
 
         // Random value between two and the max amount of bullets/hits per minute
         // to simulate a human's random behavior, then divide by 60 to convert
@@ -78,7 +85,9 @@ public class EnemyAttacking : MonoBehaviour {
             Quaternion.Euler(new Vector3(0f, 0f, transform.localEulerAngles.z + m_bulletRotationZOffset)));
 
         // Assign the bullet's owner to be this gameobject (the enemy)
+        // as well as the damage of this bullet
         blt.Owner = tag;
+        blt.Damage = m_rangedDamage;
 
         return blt;
     }
@@ -117,6 +126,9 @@ public class EnemyAttacking : MonoBehaviour {
     [Tooltip("How far from the target to start firing. In meters")]
     private float m_firingThreshold = 1.5f;
 
+    [SerializeField]
+    private float m_rangedDamage = 20f;
+
     [Header("Melee")]
     [Space]
 
@@ -127,9 +139,13 @@ public class EnemyAttacking : MonoBehaviour {
     [SerializeField]
     [Range(0.2f, 0.5f)]
     [Tooltip("How far from the target to start hitting. In meters")]
-    private float m_hittingThreshold = 0.3f;
+    private float m_hittingThreshold = 0.2f;
+
+    [SerializeField]
+    private float m_meleeDamage = 10f;
 
     private bool m_canAttack = true;
     private bool m_isAttacking = false;
+    private Health m_currentTargetHealth = null;
     #endregion
 }

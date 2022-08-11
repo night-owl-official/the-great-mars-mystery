@@ -67,7 +67,7 @@ public class AgentChasing : MonoBehaviour {
             // Update the movement direction
             m_enemyMovement.UpdateMovementDirection(m_target.transform.position);
 
-            m_enemyAttacking.InitiateAttack();
+            m_enemyAttacking.InitiateAttack(m_target);
         } else {
             m_enemyAttacking.IsAttacking = false;
         }

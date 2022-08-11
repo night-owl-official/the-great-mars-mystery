@@ -517,7 +517,7 @@ PrefabInstance:
     - target: {fileID: -1095912481574216255, guid: 751a70192f6dee24ea17840ada3ef116,
         type: 3}
       propertyPath: m_hittingThreshold
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -1095912481574216255, guid: 751a70192f6dee24ea17840ada3ef116,
         type: 3}

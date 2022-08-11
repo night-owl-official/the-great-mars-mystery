@@ -8,9 +8,10 @@ public enum EnemyState {
     Die
 }
 
-// Make sure we have access to AgentPatrolling, AgentChasing
+// Make sure we have access to AgentPatrolling, AgentChasing, Health
 [RequireComponent(typeof(AgentPatrolling))]
 [RequireComponent(typeof(AgentChasing))]
+[RequireComponent(typeof(Health))]
 public class EnemyController : MonoBehaviour {
 
     #region Methods
@@ -18,6 +19,7 @@ public class EnemyController : MonoBehaviour {
     private void Start() {
         m_agentPatrolling = GetComponent<AgentPatrolling>();
         m_agentChasing = GetComponent<AgentChasing>();
+        m_health = GetComponent<Health>();
     }
 
     // Called once every frame
@@ -30,14 +32,19 @@ public class EnemyController : MonoBehaviour {
     /// Switches the current enemy state based on certain conditions.
     /// </summary>
     private void HandleStateSwitchingLogic() {
+        // Check if the enemy was taken out
+        if (m_health.IsZero()) {
+            m_currentState = EnemyState.Die;
+
+            return;
+        }
+
         // Set the state to chasing when the agent
         // meets the conditions for a chase, patrol otherwise
         if (m_agentChasing.HasEngagedTarget())
             m_currentState = EnemyState.ChaseAndAttack;
         else
             m_currentState = EnemyState.Patrol;
-
-        // Further logic to switch to different states will be added here
     }
 
     /// <summary>
@@ -70,7 +77,12 @@ public class EnemyController : MonoBehaviour {
                 m_agentChasing.InitiateTargetEngagement();
                 break;
             case EnemyState.Die:
-                // To be inserted
+                // Reset all other states
+                m_agentPatrolling.IsPatrolling = false;
+
+                // Destroy this gameobject
+                Destroy(gameObject);
+
                 break;
         }
     }
@@ -80,5 +92,6 @@ public class EnemyController : MonoBehaviour {
     private EnemyState m_currentState = EnemyState.None;
     private AgentPatrolling m_agentPatrolling = null;
     private AgentChasing m_agentChasing = null;
+    private Health m_health = null;
     #endregion
 }
