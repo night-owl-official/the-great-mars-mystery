@@ -32,7 +32,9 @@ public class PlayerShooting : MonoBehaviour {
             Quaternion.Euler(new Vector3(0f, 0f, transform.localEulerAngles.z + m_bulletRotationZOffset)));
 
         // Assign the bullet's owner to be this gameobject (the player)
+        // as well as the damage of this bullet
         blt.Owner = tag;
+        blt.Damage = m_bulletDamage;
 
         return blt;
     }
@@ -52,5 +54,8 @@ public class PlayerShooting : MonoBehaviour {
 
     [SerializeField]
     private float m_bulletSpeed = 2f;
+
+    [SerializeField]
+    private float m_bulletDamage = 20f;
     #endregion
 }
