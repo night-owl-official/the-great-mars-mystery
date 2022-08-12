@@ -15,7 +15,13 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
+        // Destroy the gameobject upon death
+        if (m_playerHealth.IsZero())
+            Destroy(gameObject);
+
         SetMovementInputs();
+
+        m_playerShooting.InitiateShooting(Input.GetButtonDown("Fire1"));
     }
 
     // FixedUpdate is called once per physics update

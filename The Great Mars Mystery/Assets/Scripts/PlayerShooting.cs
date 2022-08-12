@@ -3,15 +3,18 @@
 public class PlayerShooting : MonoBehaviour {
 
     #region Methods
-    // Called once per frame
-    private void Update() {
+    /// <summary>
+    /// Initiates the player shooting.
+    /// </summary>
+    /// <param name="fireButtonPressed">Whether the fire button is pressed or not.</param>
+    public void InitiateShooting(bool fireButtonPressed) {
         // Need access to fire point
         if (!m_bulletFirePoint)
             return;
 
         // Shoot a bullet when the user presses the fire button
         // which is typically lft mouse button
-        if (Input.GetButtonDown("Fire1")) {
+        if (fireButtonPressed) {
             Bullet bullet = SpawnBullet();
 
             // Add a force to the bullet in the fire point's direction
