@@ -27,7 +27,7 @@ public class EnemyAttacking : MonoBehaviour {
         // Only attack when possible
         if (m_canAttack) {
             // Set the target health if it has one
-            m_currentTargetHealth = target.GetComponent<Health>();
+            m_currentTargetHealth = target?.GetComponent<Health>();
 
             StartCoroutine(PerformAttack());
         }

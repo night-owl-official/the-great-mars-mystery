@@ -11,35 +11,31 @@ public class PlayerMovement : MonoBehaviour {
         m_rb = GetComponent<Rigidbody2D>();
     }
 
-    // Called once every frame
-    private void Update() {
-        // Retrieve the user's input with a value between -1 and 1
-        m_hInput = Input.GetAxisRaw("Horizontal");
-        m_vInput = Input.GetAxisRaw("Vertical");
-
-        // Get the mouse position in world coordinates, ignore the z axis
-        m_worldMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    }
-
-    // Called once every Physics update
-    private void FixedUpdate() {
+    /// <summary>
+    /// Initiates player movement.
+    /// </summary>
+    /// <param name="hInput">User input on the horizontal axis.</param>
+    /// <param name="vInput">User input on the vertical axis.</param>
+    /// <param name="worldMousePos">The mouse position in world coordinates.</param>
+    public void InitiateMovement(float hInput, float vInput, Vector2 worldMousePos) {
         // Add a velocity to the current rigidbody's position
         // The resulting vector gets normalized to avoid faster diagonal movement
         // and then multiplied by a speed variable to control the character's speed
         // and by delta time to make it frame rate independent.
         m_rb.MovePosition(m_rb.position +
-            new Vector2(m_hInput, m_vInput).normalized * m_speed *
+            new Vector2(hInput, vInput).normalized * m_speed *
             Time.fixedDeltaTime);
 
-        ApplyRotation();
+        ApplyRotation(worldMousePos);
     }
 
     /// <summary>
     /// Calculates the rotation angle and applies it to the rigidbody.
     /// </summary>
-    private void ApplyRotation() {
+    /// <param name="mousePos">The mouse position in world space.</param>
+    private void ApplyRotation(Vector2 mousePos) {
         // Vector from the player to the mouse position
-        Vector2 playerToMouse = m_worldMousePos - m_rb.position;
+        Vector2 playerToMouse = mousePos - m_rb.position;
         // Find the angle between the horizontal axis and the vector
         // pointing in the direction where the mouse is
         // The angle is then converted into degrees and given an 90 degrees offset
@@ -60,9 +56,5 @@ public class PlayerMovement : MonoBehaviour {
     private float m_rotationSmoothing = 0.2f;
 
     private Rigidbody2D m_rb;
-
-    private float m_hInput;
-    private float m_vInput;
-    private Vector2 m_worldMousePos;
     #endregion
 }
