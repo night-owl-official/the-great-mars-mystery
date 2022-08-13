@@ -3,16 +3,23 @@
 public class PlayerShooting : MonoBehaviour {
 
     #region Methods
-    // Called once per frame
-    private void Update() {
+    /// <summary>
+    /// Initiates the player shooting.
+    /// </summary>
+    /// <param name="fireButtonPressed">Whether the fire button is pressed or not.</param>
+    public void InitiateShooting(bool fireButtonPressed) {
+        // Need access to fire point
+        if (!m_bulletFirePoint)
+            return;
+
         // Shoot a bullet when the user presses the fire button
         // which is typically lft mouse button
-        if (Input.GetButtonDown("Fire1")) {
+        if (fireButtonPressed) {
             Bullet bullet = SpawnBullet();
 
-            // Add a force to the bullet in the player's up direction (forward)
+            // Add a force to the bullet in the fire point's direction
             Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
-            bulletRigidbody.AddForce(transform.up * m_bulletSpeed, ForceMode2D.Impulse);
+            bulletRigidbody.AddForce(m_bulletFirePoint.up * m_bulletSpeed, ForceMode2D.Impulse);
         }
     }
 
@@ -21,29 +28,16 @@ public class PlayerShooting : MonoBehaviour {
     /// </summary>
     /// <returns>The spawned bullet</returns>
     private Bullet SpawnBullet() {
-        // Bullet's starting position with some offset on the horizontal axis relative
-        // to the local player's sideways (right)
-        Vector2 startingPosition =
-            (Vector2)transform.position +
-            (new Vector2(m_bulletFirePoint.x, 0f) * transform.right);
-
-        // The offset on the vertical axis relative the local player's forward (up)
-        Vector2 forwardOffset =
-            new Vector2(m_bulletFirePoint.y, m_bulletFirePoint.y) * transform.up;
-
-        // The bullet rotation based on the player's rotation
-        Quaternion finalRotation =
-            Quaternion.Euler(m_bulletPrefab.transform.rotation.eulerAngles +
-            transform.rotation.eulerAngles);
-
         // Instantiate a bullet at the player position taking into account offset
         // and rotating the bullet based on the player's rotation.
         Bullet blt = Instantiate(m_bulletPrefab,
-            startingPosition + forwardOffset,
-            finalRotation);
+            m_bulletFirePoint.position,
+            Quaternion.Euler(new Vector3(0f, 0f, transform.localEulerAngles.z + m_bulletRotationZOffset)));
 
         // Assign the bullet's owner to be this gameobject (the player)
+        // as well as the damage of this bullet
         blt.Owner = tag;
+        blt.Damage = m_bulletDamage;
 
         return blt;
     }
@@ -54,10 +48,17 @@ public class PlayerShooting : MonoBehaviour {
     private Bullet m_bulletPrefab;
 
     [SerializeField]
-    [Tooltip("The offset from the player where the bullet will be fired from")]
-    private Vector2 m_bulletFirePoint = new Vector2(0.015f, 0.2f);
+    [Tooltip("The point from where the bullet will be fired")]
+    private Transform m_bulletFirePoint = null;
+
+    [SerializeField]
+    [Tooltip("The offset in the z axis to adjust the bullet rotation.")]
+    private float m_bulletRotationZOffset = 0f;
 
     [SerializeField]
     private float m_bulletSpeed = 2f;
+
+    [SerializeField]
+    private float m_bulletDamage = 20f;
     #endregion
 }
