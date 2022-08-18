@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public Dialogue dialogueScript;
-    private bool playerDetected;
-
-
+    #region Methods
     //Detect trigger with player
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -38,4 +34,10 @@ public class DialogueTrigger : MonoBehaviour
             dialogueScript.StartDialogue();
         }
     }
+    #endregion
+
+    #region Member variables
+    public Dialogue dialogueScript;
+    private bool playerDetected;
+    #endregion
 }

@@ -5,26 +5,7 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    //Fields
-    //Window
-    public GameObject window;
-    //Indicator
-    public GameObject indicator;
-    //Text component
-    public TMP_Text dialogueText;
-    //Dialogues list
-    public List<string> dialogues;
-    //Writing speed
-    public float writingSpeed;
-    //Selected Dialogue index
-    private int index;
-    //Character index
-    private int charIndex;
-    //Started boolean
-    private bool started;
-    //Wait for next boolean
-    private bool waitForNext;
-
+    #region Methods
     private void Awake()
     {
         ToggleIndicator(false);
@@ -57,7 +38,6 @@ public class Dialogue : MonoBehaviour
         ToggleIndicator(false);
         //start with first dialogue
         GetDialogue(0);
-        
     }
 
     private void GetDialogue(int i)
@@ -75,10 +55,8 @@ public class Dialogue : MonoBehaviour
     //End Dialogue
     public void EndDialogue()
     {
-        
         //Hide the window
         ToggleWindow(false);
-
 
         //Reset the dialogue to start
         StopAllCoroutines();
@@ -87,6 +65,7 @@ public class Dialogue : MonoBehaviour
     }
 
     //Writing logic
+    //Writes the text like a typewriter one letter at a time
     IEnumerator Writing()
     {
         //Wait x seconds
@@ -110,7 +89,6 @@ public class Dialogue : MonoBehaviour
             //End this sentence and wait for the next one
             waitForNext = true;
         }
-        
     }
 
     private void Update()
@@ -136,8 +114,29 @@ public class Dialogue : MonoBehaviour
                 //If not End dialogue
                 ToggleIndicator(true);
                 EndDialogue();
-            }
-            
+            }  
         }
     }
+    #endregion
+
+    #region Member variables
+    //Window
+    public GameObject window;
+    //Indicator
+    public GameObject indicator;
+    //Text component
+    public TMP_Text dialogueText;
+    //Dialogues list
+    public List<string> dialogues;
+    //Writing speed
+    public float writingSpeed;
+    //Selected Dialogue index
+    private int index;
+    //Character index
+    private int charIndex;
+    //Started boolean
+    private bool started;
+    //Wait for next boolean
+    private bool waitForNext;
+    #endregion
 }
