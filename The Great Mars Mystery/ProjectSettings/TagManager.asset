@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Enemy
+  - Car
   layers:
   - Default
   - TransparentFX
