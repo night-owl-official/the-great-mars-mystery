@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/preload.unity
     guid: fcf3471748312d144be20ea4cddeb36a
   - enabled: 1
+    path: Assets/Scenes/external_map.unity
+    guid: 93477e40578185a49acbbb41fecb11b1
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/office.unity
+    guid: 80dd5566db9ba45408e2644bbad9b24c
+  - enabled: 1
+    path: Assets/Scenes/apartment.unity
+    guid: f06500006197eef4cbed8685e2fcec0a
   m_configObjects: {}

@@ -16,7 +16,14 @@ public class SoundManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
+            s.source.playOnAwake=s.playOnAwake;
+            s.source.loop = s.loop;
         }
+    }
+
+    void Start()
+    {
+        Play("Theme");
     }
 
     public void Play(string name)
