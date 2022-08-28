@@ -48,7 +48,7 @@ Transform:
   m_GameObject: {fileID: 4555045398515969655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.28, y: 0.3, z: -1}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_Children:
   - {fileID: 2283780537547486949}
   m_Father: {fileID: 0}
@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd98fd22a81ab9479a9ab8ccc42b7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueScript: {fileID: 4555045398717941186}
 --- !u!1001 &4555045399888880949
 PrefabInstance:
   m_ObjectHideFlags: 0

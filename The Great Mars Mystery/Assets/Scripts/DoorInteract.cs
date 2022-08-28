@@ -14,7 +14,14 @@ public class DoorInteract : MonoBehaviour
     void Update()
     {
         if (playerDetected && Input.GetButtonDown("Interact"))
+        {
+            if(SceneManager.GetActiveScene().name == "external_map")
+            {
+                FindObjectOfType<GameManager>().playerPos = GameObject.Find("Player(Clone)").transform.position;
+            }
             SceneManager.LoadScene(sceneName);
+        }
+            
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

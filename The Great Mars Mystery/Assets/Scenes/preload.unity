@@ -179,6 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135bbcc4faeb9654694bc25a691edac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefrab: {fileID: 2582240339682489089, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
+    type: 3}
+  playerPos: {x: 0, y: 0, z: 0}
 --- !u!114 &513409008
 MonoBehaviour:
   m_ObjectHideFlags: 0
