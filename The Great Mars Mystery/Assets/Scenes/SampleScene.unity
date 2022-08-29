@@ -1505,6 +1505,21 @@ PrefabInstance:
       propertyPath: m_bulletRotationZOffset
       value: 270
       objectReference: {fileID: 0}
+    - target: {fileID: 5002688121759527081, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002688121759527081, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002688121759527081, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6358380641866493238, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
         type: 3}
       propertyPath: healthBarUI
