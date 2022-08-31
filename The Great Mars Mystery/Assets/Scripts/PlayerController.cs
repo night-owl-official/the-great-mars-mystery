@@ -16,8 +16,10 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     private void Update() {
         // Destroy the gameobject upon death
-        if (m_playerHealth.IsZero())
+        if (m_playerHealth.IsZero()){
+            FindObjectOfType<GameManager>().killScreen();
             Destroy(gameObject);
+        }
 
         SetMovementInputs();
 
