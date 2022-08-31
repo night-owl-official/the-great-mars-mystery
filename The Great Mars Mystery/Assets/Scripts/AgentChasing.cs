@@ -10,6 +10,8 @@ public class AgentChasing : MonoBehaviour {
     private void Start() {
         m_enemyMovement = GetComponent<EnemyMovement>();
         m_enemyAttacking = GetComponent<EnemyAttacking>();
+
+        m_target = FindObjectOfType<PlayerController>().gameObject;
     }
 
     // Update is called once per frame

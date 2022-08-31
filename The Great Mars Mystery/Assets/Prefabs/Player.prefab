@@ -179,8 +179,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 90
-  m_LinearDrag: 100
-  m_AngularDrag: 1
+  m_LinearDrag: 20
+  m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -225,10 +225,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0bb86cf01c957546b105c030b27cabf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletPrefab: {fileID: 0}
-  m_bulletFirePoint: {fileID: 0}
-  m_bulletRotationZOffset: 180
-  m_bulletSpeed: 2
+  m_bulletPrefab: {fileID: 6785831894633440310, guid: 78e1061305d49b946976cd6e3a3bff29,
+    type: 3}
+  m_bulletFirePoint: {fileID: 4314219148943523656}
+  m_bulletRotationZOffset: -90
+  m_bulletSpeed: 5
   m_bulletDamage: 20
 --- !u!114 &6358380641866493238
 MonoBehaviour:
@@ -255,4 +256,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5cd577a5624c434985e5d9265024fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentInterObj: {fileID: 0}
