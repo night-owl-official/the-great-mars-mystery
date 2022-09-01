@@ -7,7 +7,7 @@ public class InteractionObject : MonoBehaviour {
 
     #region Methods
     private void Start() {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player(Clone)");
     }
 
     private void Update() {
