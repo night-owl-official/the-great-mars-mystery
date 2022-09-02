@@ -17,6 +17,11 @@ public class Dialogue : MonoBehaviour {
     public void ToggleIndicator(bool show) {
         indicator.SetActive(show);
     }
+
+    public void ToggleIcon(bool show)
+    {
+        icon.SetActive(show);
+    }
     
     public void StartDialogue() {
         if (started)
@@ -25,6 +30,7 @@ public class Dialogue : MonoBehaviour {
         started = true;
         ToggleWindow(true);
         ToggleIndicator(false);
+        ToggleIcon(false);
 
         //start with first dialogue
         GetDialogue(0);
@@ -94,6 +100,9 @@ public class Dialogue : MonoBehaviour {
 
     [SerializeField]
     private GameObject indicator;
+
+    [SerializeField]
+    private GameObject icon;
 
     [SerializeField]
     private TMP_Text dialogueText;
