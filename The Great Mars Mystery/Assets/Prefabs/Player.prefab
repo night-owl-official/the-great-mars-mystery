@@ -143,7 +143,7 @@ Transform:
   m_GameObject: {fileID: 2582240339682489089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5002688121759527081}
   - {fileID: 4314219148943523656}
@@ -246,6 +246,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHP: 100
   healthBarUI: {fileID: 0}
+--- !u!114 &1420314474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2582240339682489089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5cd577a5624c434985e5d9265024fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5415154659522964967
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,15 +339,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1420314474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2582240339682489089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5cd577a5624c434985e5d9265024fbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
