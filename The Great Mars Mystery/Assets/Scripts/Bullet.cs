@@ -46,6 +46,10 @@ public class Bullet : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    private void Start() {
+        FindObjectOfType<SoundManager>().Play("shooting");
+    }
+
     /// <summary>
     /// Deals damage to an entity.
     /// </summary>

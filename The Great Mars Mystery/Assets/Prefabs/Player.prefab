@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 2582240339682489088}
   - component: {fileID: 2693201866547565341}
   - component: {fileID: 6358380641866493238}
+  - component: {fileID: 1420314474}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -142,7 +143,7 @@ Transform:
   m_GameObject: {fileID: 2582240339682489089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 5002688121759527081}
   - {fileID: 4314219148943523656}
@@ -179,8 +180,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 90
-  m_LinearDrag: 100
-  m_AngularDrag: 1
+  m_LinearDrag: 20
+  m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -211,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf16f21aeb64c64395a6e461597bb09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 1
+  m_speed: 3
   m_rotationSmoothing: 0.2
 --- !u!114 &2693201866547565341
 MonoBehaviour:
@@ -228,8 +229,8 @@ MonoBehaviour:
   m_bulletPrefab: {fileID: 6785831894633440310, guid: 78e1061305d49b946976cd6e3a3bff29,
     type: 3}
   m_bulletFirePoint: {fileID: 4314219148943523656}
-  m_bulletRotationZOffset: 180
-  m_bulletSpeed: 2
+  m_bulletRotationZOffset: -90
+  m_bulletSpeed: 5
   m_bulletDamage: 20
 --- !u!114 &6358380641866493238
 MonoBehaviour:
@@ -326,3 +327,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1420314474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2582240339682489089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5cd577a5624c434985e5d9265024fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
