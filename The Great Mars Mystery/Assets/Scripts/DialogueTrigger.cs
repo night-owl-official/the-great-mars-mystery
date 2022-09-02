@@ -10,7 +10,9 @@ public class DialogueTrigger : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
             playerDetected = true;
+            activated = true;
             dialogueScript.ToggleIndicator(playerDetected);
+            dialogueScript.ToggleIcon(activated);
         }
     }
 
@@ -31,5 +33,6 @@ public class DialogueTrigger : MonoBehaviour {
     #region Member variables
     private Dialogue dialogueScript;
     private bool playerDetected;
+    private bool activated;
     #endregion
 }

@@ -7,6 +7,7 @@ public class Health : MonoBehaviour {
     private void Start() {
         // Set the current health to max
         m_currentHP = m_maxHP;
+        healthBarUI.SetMaxHealth(m_maxHP);
     }
 
     /// <summary>
@@ -16,6 +17,7 @@ public class Health : MonoBehaviour {
     public void DeductHPs(float amount) {
         // Decrease current health, never underflowing zero
         m_currentHP = Mathf.Max(m_currentHP - amount, 0f);
+        healthBarUI.SetHealth(m_currentHP);
 
         // Temporary log
         Debug.Log(name + " took " + amount + " damage. Current health: " + m_currentHP);
@@ -33,5 +35,7 @@ public class Health : MonoBehaviour {
     private float m_maxHP = 100f;
 
     private float m_currentHP = 100f;
+
+    public HealthBarUI healthBarUI;
     #endregion
 }
