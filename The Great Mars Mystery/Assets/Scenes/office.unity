@@ -7691,7 +7691,7 @@ Transform:
   - {fileID: 1679241244}
   - {fileID: 1385308844}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2057396256
 PrefabInstance:
@@ -7703,6 +7703,11 @@ PrefabInstance:
     - target: {fileID: 6341116806836951580, guid: 8ad9fdcfef20c4947874d7e464b624f5,
         type: 3}
       propertyPath: sceneName
+      value: external_map
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341116806836951580, guid: 8ad9fdcfef20c4947874d7e464b624f5,
+        type: 3}
+      propertyPath: sceneThisDoorLeadsTo
       value: external_map
       objectReference: {fileID: 0}
     - target: {fileID: 6341116806836951581, guid: 8ad9fdcfef20c4947874d7e464b624f5,
