@@ -7,7 +7,7 @@ public class InteractionObject : MonoBehaviour {
 
     #region Methods
     private void Start() {
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.Find("Player(Clone)");
     }
 
     private void Update() {
@@ -18,8 +18,6 @@ public class InteractionObject : MonoBehaviour {
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             gameObject.GetComponent<CarMovement>().enabled = false;
         }
-
-        Debug.Log(player);
     }
 
     public void DoInteraction() {
