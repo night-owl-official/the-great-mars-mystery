@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   window: {fileID: 9088222269905785055}
   indicator: {fileID: 7854381323837902988}
+  icon: {fileID: 9009082765852902705}
   dialogueText: {fileID: 1051568879375683965}
   dialogues:
   - Hello Player!... Press E to continue
@@ -220,6 +221,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: instructionText
       objectReference: {fileID: 0}
+    - target: {fileID: 7228169663661303694, guid: 4dda22194727a3b47bc1090e73dd06b2,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7827235422291555109, guid: 4dda22194727a3b47bc1090e73dd06b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4dda22194727a3b47bc1090e73dd06b2, type: 3}
@@ -256,6 +262,12 @@ MonoBehaviour:
 --- !u!1 &7854381323837902988 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5924093451853723065, guid: 4dda22194727a3b47bc1090e73dd06b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 4555045399888880949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9009082765852902705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4769440250137600004, guid: 4dda22194727a3b47bc1090e73dd06b2,
     type: 3}
   m_PrefabInstance: {fileID: 4555045399888880949}
   m_PrefabAsset: {fileID: 0}

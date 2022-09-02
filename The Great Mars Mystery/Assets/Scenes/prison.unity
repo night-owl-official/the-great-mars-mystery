@@ -397,7 +397,7 @@ PrefabInstance:
     - target: {fileID: 6341116806836951580, guid: 8ad9fdcfef20c4947874d7e464b624f5,
         type: 3}
       propertyPath: sceneThisDoorLeadsTo
-      value: external_map
+      value: external_map2
       objectReference: {fileID: 0}
     - target: {fileID: 6341116806836951581, guid: 8ad9fdcfef20c4947874d7e464b624f5,
         type: 3}

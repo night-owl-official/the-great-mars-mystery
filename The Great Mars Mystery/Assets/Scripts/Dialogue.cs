@@ -8,6 +8,7 @@ public class Dialogue : MonoBehaviour {
     private void Awake() {
         ToggleIndicator(false);
         ToggleWindow(false);
+        ToggleIcon(true);
     }
 
     private void ToggleWindow(bool show) {
