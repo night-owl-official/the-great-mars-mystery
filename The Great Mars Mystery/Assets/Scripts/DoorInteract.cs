@@ -15,7 +15,9 @@ public class DoorInteract : MonoBehaviour {
         if (playerDetected && Input.GetButtonDown("Interact")) {
             if (SceneManager.GetActiveScene().name == "external_map") {
                 Vector2 currentPlayerPos = GameObject.Find("Player(Clone)").transform.position;
+                Vector2 currentCarPos = GameObject.Find("Car(Clone)").transform.position;
                 FindObjectOfType<GameManager>().SetPlayerPosition(currentPlayerPos);
+                FindObjectOfType<GameManager>().SetCarPosition(currentCarPos);
             }
 
             SceneManager.LoadScene(sceneThisDoorLeadsTo);
