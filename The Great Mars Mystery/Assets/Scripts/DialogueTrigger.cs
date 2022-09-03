@@ -10,9 +10,7 @@ public class DialogueTrigger : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
             playerDetected = true;
-            activated = true;
             dialogueScript.ToggleIndicator(playerDetected);
-            dialogueScript.ToggleIcon(activated);
         }
     }
 
@@ -25,14 +23,15 @@ public class DialogueTrigger : MonoBehaviour {
     }
 
     private void Update() {
-        if (playerDetected && Input.GetButtonDown("Interact"))
+        if (playerDetected && Input.GetButtonDown("Interact")) {
+            GameManager.AddCharacterNameToAlreadySpokenToList(name);
             dialogueScript.StartDialogue();
+        }
     }
     #endregion
 
     #region Member variables
     private Dialogue dialogueScript;
     private bool playerDetected;
-    private bool activated;
     #endregion
 }

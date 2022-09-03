@@ -9,6 +9,7 @@ public class PlayerInteract : MonoBehaviour {
     private void Update() {
         if (Input.GetButtonDown("Interact") && currentInterObj) {
             currentInterObj.SendMessage("DoInteraction");
+
             if (currentInterObj.name == "Car")
                 gameObject.SetActive(false);
         }
