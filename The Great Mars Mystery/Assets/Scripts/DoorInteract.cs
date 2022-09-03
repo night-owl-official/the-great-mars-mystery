@@ -7,6 +7,9 @@ public class DoorInteract : MonoBehaviour {
 
     [SerializeField]
     private string sceneThisDoorLeadsTo;
+
+    [SerializeField]
+    private GameObject indicator;
     #endregion
 
     #region Methods
@@ -27,12 +30,20 @@ public class DoorInteract : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player")
+        {
             playerDetected = true;
+            indicator.SetActive(true);
+        }
+            
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "Player")
+        {
             playerDetected = false;
+            indicator.SetActive(false);
+        }
+            
     }
     #endregion
 }
