@@ -8,6 +8,8 @@ public class Dialogue : MonoBehaviour {
     private void Awake() {
         ToggleIndicator(false);
         ToggleWindow(false);
+
+        DisableIconsForNPCsAlreadySpokenTo();
     }
 
     private void ToggleWindow(bool show) {
@@ -18,9 +20,9 @@ public class Dialogue : MonoBehaviour {
         indicator.SetActive(show);
     }
 
-    public void ToggleIcon(bool show)
-    {
-        icon.SetActive(show);
+    private void DisableIconsForNPCsAlreadySpokenTo() {
+        if (GameManager.IsCharacterNameInAlreadySpokenToList(transform.root.name))
+            icon.SetActive(false);
     }
     
     public void StartDialogue() {
@@ -30,7 +32,7 @@ public class Dialogue : MonoBehaviour {
         started = true;
         ToggleWindow(true);
         ToggleIndicator(false);
-        ToggleIcon(false);
+        icon.SetActive(false);
 
         //start with first dialogue
         GetDialogue(0);
