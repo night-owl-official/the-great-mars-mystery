@@ -23,8 +23,10 @@ public class DialogueTrigger : MonoBehaviour {
     }
 
     private void Update() {
-        if (playerDetected && Input.GetButtonDown("Interact"))
+        if (playerDetected && Input.GetButtonDown("Interact")) {
+            GameManager.AddCharacterNameToAlreadySpokenToList(name);
             dialogueScript.StartDialogue();
+        }
     }
     #endregion
 

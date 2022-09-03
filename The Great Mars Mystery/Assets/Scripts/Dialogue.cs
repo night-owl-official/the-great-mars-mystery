@@ -8,6 +8,8 @@ public class Dialogue : MonoBehaviour {
     private void Awake() {
         ToggleIndicator(false);
         ToggleWindow(false);
+
+        DisableIconsForNPCsAlreadySpokenTo();
     }
 
     private void ToggleWindow(bool show) {
@@ -17,6 +19,11 @@ public class Dialogue : MonoBehaviour {
     public void ToggleIndicator(bool show) {
         indicator.SetActive(show);
     }
+
+    private void DisableIconsForNPCsAlreadySpokenTo() {
+        if (GameManager.IsCharacterNameInAlreadySpokenToList(transform.root.name))
+            icon.SetActive(false);
+    }
     
     public void StartDialogue() {
         if (started)
@@ -25,6 +32,7 @@ public class Dialogue : MonoBehaviour {
         started = true;
         ToggleWindow(true);
         ToggleIndicator(false);
+        icon.SetActive(false);
 
         //start with first dialogue
         GetDialogue(0);
@@ -94,6 +102,9 @@ public class Dialogue : MonoBehaviour {
 
     [SerializeField]
     private GameObject indicator;
+
+    [SerializeField]
+    private GameObject icon;
 
     [SerializeField]
     private TMP_Text dialogueText;

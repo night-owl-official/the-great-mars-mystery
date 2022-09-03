@@ -18,8 +18,6 @@ public class InteractionObject : MonoBehaviour {
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             gameObject.GetComponent<CarMovement>().enabled = false;
         }
-
-        Debug.Log(player);
     }
 
     public void DoInteraction() {

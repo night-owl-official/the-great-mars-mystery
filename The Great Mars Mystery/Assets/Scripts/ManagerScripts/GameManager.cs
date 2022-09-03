@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
@@ -6,10 +7,23 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private GameObject playerPrefrab;
 
+    private static List<string> characterNamesAlreadySpokenTo = new List<string>();
+
     private Vector3 playerPos;
     #endregion
 
     #region Methods
+    public static void AddCharacterNameToAlreadySpokenToList(string charName) {
+        if (characterNamesAlreadySpokenTo.Contains(charName))
+            return;
+
+        characterNamesAlreadySpokenTo.Add(charName);
+    }
+
+    public static bool IsCharacterNameInAlreadySpokenToList(string charName) {
+        return characterNamesAlreadySpokenTo.Contains(charName);
+    }
+
     private void Awake() {
         DontDestroyOnLoad(gameObject);
     }
