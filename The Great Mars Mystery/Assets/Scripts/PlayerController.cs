@@ -2,7 +2,7 @@
 
 [RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(PlayerShooting))]
-[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(PlayerHealth))]
 public class PlayerController : MonoBehaviour {
 
     #region Methods

@@ -125,8 +125,8 @@ GameObject:
   - component: {fileID: -2460468525915837995}
   - component: {fileID: 2582240339682489088}
   - component: {fileID: 2693201866547565341}
-  - component: {fileID: 6358380641866493238}
   - component: {fileID: 1420314474}
+  - component: {fileID: 6699124498054936745}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -231,19 +231,6 @@ MonoBehaviour:
   m_bulletRotationZOffset: -90
   m_bulletSpeed: 5
   m_bulletDamage: 20
---- !u!114 &6358380641866493238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2582240339682489089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61edbe7e3f025b6448920e8bac53322a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxHP: 100
 --- !u!114 &1420314474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,3 +243,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5cd577a5624c434985e5d9265024fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6699124498054936745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2582240339682489089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c1db744b9088843b3da0a00e96c1bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHP: 100

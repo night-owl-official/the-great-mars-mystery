@@ -20076,7 +20076,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.282884
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -20130,6 +20130,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: health_bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 127644137860568238, guid: 307c2809692f5674d9f06a3bb139cf2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlayerHealthUI
       objectReference: {fileID: 0}
     - target: {fileID: 132810472593046885, guid: 307c2809692f5674d9f06a3bb139cf2f,
         type: 3}
@@ -20245,6 +20250,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968267949476122756, guid: 307c2809692f5674d9f06a3bb139cf2f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968267949476122756, guid: 307c2809692f5674d9f06a3bb139cf2f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968267949476122756, guid: 307c2809692f5674d9f06a3bb139cf2f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 307c2809692f5674d9f06a3bb139cf2f, type: 3}
