@@ -13,6 +13,10 @@ public class DoorInteract : MonoBehaviour {
     #endregion
 
     #region Methods
+    private void Awake()
+    {
+        indicator.SetActive(false);
+    }
     // Update is called once per frame
     private void Update() {
         if (playerDetected && Input.GetButtonDown("Interact")) {
