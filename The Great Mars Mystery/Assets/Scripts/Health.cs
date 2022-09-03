@@ -4,16 +4,13 @@ public class Health : MonoBehaviour {
 
     #region Methods
     // Called before the first frame
-    private void Start() {
-        // Set the current health to max
-        m_currentHP = m_maxHP;
-    }
+    protected virtual void Start() {}
 
     /// <summary>
     /// Decreases the HPs by the given amount.
     /// </summary>
     /// <param name="amount">The amount to deduct from HPs.S</param>
-    public void DeductHPs(float amount) {
+    public virtual void DeductHPs(float amount) {
         // Decrease current health, never underflowing zero
         m_currentHP = Mathf.Max(m_currentHP - amount, 0f);
 
@@ -30,8 +27,8 @@ public class Health : MonoBehaviour {
 
     #region Member variables
     [SerializeField]
-    private float m_maxHP = 100f;
+    protected float m_maxHP = 100f;
 
-    private float m_currentHP = 100f;
+    protected float m_currentHP = 100f;
     #endregion
 }

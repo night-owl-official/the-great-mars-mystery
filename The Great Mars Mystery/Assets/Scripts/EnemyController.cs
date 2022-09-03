@@ -11,7 +11,7 @@ public enum EnemyState {
 // Make sure we have access to AgentPatrolling, AgentChasing, Health
 [RequireComponent(typeof(AgentPatrolling))]
 [RequireComponent(typeof(AgentChasing))]
-[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(EnemyHealth))]
 public class EnemyController : MonoBehaviour {
 
     #region Methods
