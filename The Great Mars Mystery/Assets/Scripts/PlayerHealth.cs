@@ -16,6 +16,10 @@ public class PlayerHealth : Health {
         SetPlayerHealthBarUI(m_currentHP);
     }
 
+    public static void Reset() {
+        damageTaken = 0f;
+    }
+
     private static void SetPlayerHealthBarUI(float value) {
         if (!healthBarUI)
             return;

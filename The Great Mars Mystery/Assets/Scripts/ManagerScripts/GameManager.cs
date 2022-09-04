@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
     public void StartGame() {
         playerPos = new Vector3(0, 0, 0);
         carPos = new Vector3(3, 0, 0);
+        PlayerHealth.Reset();
 
         SceneManager.LoadScene(1);
     }
