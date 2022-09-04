@@ -13,10 +13,10 @@ public class DoorInteract : MonoBehaviour {
     #endregion
 
     #region Methods
-    private void Awake()
-    {
+    private void Awake() {
         indicator.SetActive(false);
     }
+
     // Update is called once per frame
     private void Update() {
         if (playerDetected && Input.GetButtonDown("Interact")) {
@@ -33,21 +33,19 @@ public class DoorInteract : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Player")
-        {
+        if (other.tag == "Player") {
             playerDetected = true;
             indicator.SetActive(true);
         }
-            
+
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.tag == "Player")
-        {
+        if (other.tag == "Player") {
             playerDetected = false;
             indicator.SetActive(false);
         }
-            
+
     }
     #endregion
 }

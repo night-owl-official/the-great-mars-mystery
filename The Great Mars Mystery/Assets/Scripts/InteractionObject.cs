@@ -2,6 +2,9 @@
 
 public class InteractionObject : MonoBehaviour {
     #region Member variables
+    [SerializeField]
+    private Transform carExitPoint;
+
     private GameObject player;
     #endregion
 
@@ -13,8 +16,7 @@ public class InteractionObject : MonoBehaviour {
     private void Update() {
         if (Input.GetButtonDown("Interact") && gameObject.GetComponent<CarMovement>().enabled) {
             player.SetActive(true);
-            player.transform.position =
-                new Vector3(transform.position.x + 1, transform.position.y, transform.position.z - 1f);
+            player.transform.position = carExitPoint.position;
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             gameObject.GetComponent<CarMovement>().enabled = false;
         }

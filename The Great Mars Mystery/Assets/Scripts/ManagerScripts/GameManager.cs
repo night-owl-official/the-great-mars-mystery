@@ -47,12 +47,11 @@ public class GameManager : MonoBehaviour {
             // Scene1 has been removed
             currentName = "Replaced";
 
-        if (next.name == "external_map")
-        {
+        if (next.name == "external_map") {
             Instantiate(playerPrefrab, playerPos, Quaternion.identity);
             Instantiate(carPrefab, carPos, Quaternion.identity);
         }
-            
+
 
     }
     public void killScreen() {
