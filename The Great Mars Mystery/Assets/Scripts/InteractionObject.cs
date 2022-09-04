@@ -5,6 +5,9 @@ public class InteractionObject : MonoBehaviour {
     [SerializeField]
     private Transform carExitPoint;
 
+    [SerializeField]
+    private GameObject indicator;
+
     private GameObject player;
     #endregion
 
@@ -27,6 +30,16 @@ public class InteractionObject : MonoBehaviour {
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             gameObject.GetComponent<CarMovement>().enabled = true;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag == "Player")
+            indicator.SetActive(true);
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.tag == "Player")
+            indicator.SetActive(false);
     }
     #endregion
 }
