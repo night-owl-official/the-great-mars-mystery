@@ -28,6 +28,21 @@ public class GameManager : MonoBehaviour {
         return characterNamesAlreadySpokenTo.Contains(charName);
     }
 
+    public void StartGame() {
+        playerPos = new Vector3(0, 0, 0);
+        carPos = new Vector3(3, 0, 0);
+
+        SceneManager.LoadScene(SceneManager.GetSceneByName("external_map").buildIndex);
+    }
+
+    public void QuitGame() {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+
+        Application.Quit();
+    }
+
     private void Awake() {
         DontDestroyOnLoad(gameObject);
     }
@@ -36,7 +51,6 @@ public class GameManager : MonoBehaviour {
         playerPos = new Vector3(0, 0, 0);
         carPos  = new Vector3(3, 0, 0);
 
-        SceneManager.LoadScene(1);
         SceneManager.activeSceneChanged += ChangedActiveScene;
     }
 
