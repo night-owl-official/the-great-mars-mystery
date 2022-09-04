@@ -5,10 +5,10 @@ public class InteractionObject : MonoBehaviour {
     [SerializeField]
     private Transform carExitPoint;
 
-    private GameObject player;
-
     [SerializeField]
     private GameObject indicator;
+
+    private GameObject player;
     #endregion
 
     #region Methods
@@ -33,17 +33,13 @@ public class InteractionObject : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Player") {
+        if (other.tag == "Player")
             indicator.SetActive(true);
-        }
-
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.tag == "Player") {
+        if (other.tag == "Player")
             indicator.SetActive(false);
-        }
-
     }
     #endregion
 }
