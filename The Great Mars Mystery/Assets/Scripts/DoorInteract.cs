@@ -7,15 +7,24 @@ public class DoorInteract : MonoBehaviour {
 
     [SerializeField]
     private string sceneThisDoorLeadsTo;
+
+    [SerializeField]
+    private GameObject indicator;
     #endregion
 
     #region Methods
+    private void Awake()
+    {
+        indicator.SetActive(false);
+    }
     // Update is called once per frame
     private void Update() {
         if (playerDetected && Input.GetButtonDown("Interact")) {
             if (SceneManager.GetActiveScene().name == "external_map") {
                 Vector2 currentPlayerPos = GameObject.Find("Player(Clone)").transform.position;
+                Vector2 currentCarPos = GameObject.Find("Car(Clone)").transform.position;
                 FindObjectOfType<GameManager>().SetPlayerPosition(currentPlayerPos);
+                FindObjectOfType<GameManager>().SetCarPosition(currentCarPos);
             }
 
             SceneManager.LoadScene(sceneThisDoorLeadsTo);
@@ -25,12 +34,20 @@ public class DoorInteract : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player")
+        {
             playerDetected = true;
+            indicator.SetActive(true);
+        }
+            
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "Player")
+        {
             playerDetected = false;
+            indicator.SetActive(false);
+        }
+            
     }
     #endregion
 }

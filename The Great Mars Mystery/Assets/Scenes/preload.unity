@@ -167,6 +167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefrab: {fileID: 2582240339682489089, guid: 88e0a2b7aaa9ab545b98488d1865e27d,
     type: 3}
+  carPrefab: {fileID: 1746057982713804031, guid: 0a024df7576f1f24bb93318aafd8116a,
+    type: 3}
 --- !u!1 &1536993578
 GameObject:
   m_ObjectHideFlags: 0
