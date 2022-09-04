@@ -55,9 +55,24 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: ec9c08967f9e69342b0c0e1af5e1ab40, type: 3}
-    name: Theme
+    name: car_engine
     playOnAwake: 0
     loop: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 0bf09b4d29e079b458f61bd08ce7c4a1, type: 3}
+    name: tune
+    playOnAwake: 0
+    loop: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 727037f5e0299f544aeb6b4673da6dff, type: 3}
+    name: game_over
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c167d299cdc318749a8de24632907e17, type: 3}
+    name: door_unlock
+    playOnAwake: 0
+    loop: 0
     source: {fileID: 0}
 --- !u!1 &5015296675075413950
 GameObject:

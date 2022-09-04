@@ -21,6 +21,13 @@ public class SoundManager : MonoBehaviour {
     }
 
     void Start() {
+        foreach (Sound s in sounds) {
+            if (s.name == "Theme")
+                s.source.volume = .5f;
+            else if (s.name == "tune")
+                s.source.volume = .3f;
+        }
+
         Play("Theme");
     }
 

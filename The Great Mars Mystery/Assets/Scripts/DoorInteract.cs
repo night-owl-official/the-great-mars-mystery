@@ -20,7 +20,8 @@ public class DoorInteract : MonoBehaviour {
     // Update is called once per frame
     private void Update() {
         if (playerDetected && Input.GetButtonDown("Interact")) {
-            if (SceneManager.GetActiveScene().name == "external_map") {
+            if (SceneManager.GetActiveScene().name == "external_map" ||
+                SceneManager.GetActiveScene().name == "external_map_2") {
                 Vector2 currentPlayerPos = GameObject.Find("Player(Clone)").transform.position;
                 Vector2 currentCarPos = GameObject.Find("Car(Clone)").transform.position;
                 FindObjectOfType<GameManager>().SetPlayerPosition(currentPlayerPos);
@@ -28,6 +29,7 @@ public class DoorInteract : MonoBehaviour {
             }
 
             SceneManager.LoadScene(sceneThisDoorLeadsTo);
+            FindObjectOfType<SoundManager>().Play("door_unlock");
         }
 
     }

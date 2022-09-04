@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 
     private Vector3 playerPos;
     private Vector3 carPos;
+    private SoundManager soundManager;
     #endregion
 
     #region Methods
@@ -35,7 +36,12 @@ public class GameManager : MonoBehaviour {
 
         SceneManager.LoadScene(1);
 
-        FindObjectOfType<SoundManager>().StopPlayingSound("Theme");
+        if (!soundManager)
+            soundManager = FindObjectOfType<SoundManager>();
+
+        soundManager.StopPlayingSound("game_over");
+        soundManager.StopPlayingSound("Theme");
+        soundManager.Play("tune");
     }
 
     public void GoBackToMainMenu() {
@@ -53,6 +59,7 @@ public class GameManager : MonoBehaviour {
 
     private void Awake() {
         DontDestroyOnLoad(gameObject);
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     private void Start() {
@@ -69,7 +76,7 @@ public class GameManager : MonoBehaviour {
             // Scene1 has been removed
             currentName = "Replaced";
 
-        if (next.name == "external_map") {
+        if (next.name == "external_map" || next.name == "external_map_2") {
             Instantiate(playerPrefrab, playerPos, Quaternion.identity);
             Instantiate(carPrefab, carPos, Quaternion.identity);
         }
@@ -77,6 +84,12 @@ public class GameManager : MonoBehaviour {
 
     public void killScreen() {
         SceneManager.LoadScene(5);
+
+        if (!soundManager)
+            soundManager = FindObjectOfType<SoundManager>();
+
+        soundManager.StopPlayingSound("tune");
+        soundManager.Play("game_over");
     }
 
     public void SetPlayerPosition(Vector2 pos) {
