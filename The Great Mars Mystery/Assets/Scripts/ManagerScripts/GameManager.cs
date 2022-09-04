@@ -65,11 +65,10 @@ public class GameManager : MonoBehaviour {
             Instantiate(playerPrefrab, playerPos, Quaternion.identity);
             Instantiate(carPrefab, carPos, Quaternion.identity);
         }
-
-
     }
+
     public void killScreen() {
-        Debug.Log("KILL SCREEN");
+        SceneManager.LoadScene(5);
     }
 
     public void SetPlayerPosition(Vector2 pos) {
