@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour {
         playerPos = new Vector3(0, 0, 0);
         carPos = new Vector3(3, 0, 0);
 
-        SceneManager.LoadScene(SceneManager.GetSceneByName("external_map").buildIndex);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame() {
