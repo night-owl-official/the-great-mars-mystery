@@ -36,5 +36,18 @@ public class SoundManager : MonoBehaviour {
         if (sound != null)
             sound.source.Play();
     }
+
+    public void StopPlayingSound(string name) {
+        Sound sound = null;
+        foreach (Sound s in sounds) {
+            if (s.name == name) {
+                sound = s;
+                break;
+            }
+        }
+
+        if (sound != null)
+            sound.source.Stop();
+    }
     #endregion
 }

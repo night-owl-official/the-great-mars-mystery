@@ -14,6 +14,14 @@ public class CarMovement : MonoBehaviour {
         m_rb = GetComponent<Rigidbody2D>();
     }
 
+    private void OnEnable() {
+        FindObjectOfType<SoundManager>().Play("car_engine");
+    }
+
+    private void OnDisable() {
+        FindObjectOfType<SoundManager>().StopPlayingSound("car_engine");
+    }
+
     // Called once every frame
     private void Update() {
         // Retrieve the user's input with a value between -1 and 1

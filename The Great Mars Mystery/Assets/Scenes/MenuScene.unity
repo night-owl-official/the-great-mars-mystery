@@ -650,6 +650,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5015296674052178302, guid: 6d138b7bc9f46b24e8cbb876cf33cc5c,
+        type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: car_engine
+      objectReference: {fileID: 0}
     - target: {fileID: 5015296675075413948, guid: 6d138b7bc9f46b24e8cbb876cf33cc5c,
         type: 3}
       propertyPath: m_RootOrder

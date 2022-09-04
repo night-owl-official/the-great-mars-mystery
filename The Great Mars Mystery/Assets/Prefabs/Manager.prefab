@@ -54,6 +54,11 @@ MonoBehaviour:
     playOnAwake: 1
     loop: 1
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: ec9c08967f9e69342b0c0e1af5e1ab40, type: 3}
+    name: Theme
+    playOnAwake: 0
+    loop: 1
+    source: {fileID: 0}
 --- !u!1 &5015296675075413950
 GameObject:
   m_ObjectHideFlags: 0
