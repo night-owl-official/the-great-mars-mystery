@@ -34,10 +34,13 @@ public class GameManager : MonoBehaviour {
         PlayerHealth.Reset();
 
         SceneManager.LoadScene(1);
+
+        FindObjectOfType<SoundManager>().StopPlayingSound("Theme");
     }
 
     public void GoBackToMainMenu() {
         SceneManager.LoadScene(0);
+        Destroy(gameObject); // Get rid of this game manager as there's already one in main menu
     }
 
     public void QuitGame() {
