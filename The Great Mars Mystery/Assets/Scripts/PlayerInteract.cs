@@ -10,7 +10,7 @@ public class PlayerInteract : MonoBehaviour {
         if (Input.GetButtonDown("Interact") && currentInterObj) {
             currentInterObj.SendMessage("DoInteraction");
 
-            if (currentInterObj.name == "Car")
+            if (currentInterObj.name == "Car(Clone)")
                 gameObject.SetActive(false);
         }
     }

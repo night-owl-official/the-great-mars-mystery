@@ -2,7 +2,13 @@
 
 public class InteractionObject : MonoBehaviour {
     #region Member variables
+    [SerializeField]
+    private Transform carExitPoint;
+
     private GameObject player;
+
+    [SerializeField]
+    private GameObject indicator;
     #endregion
 
     #region Methods
@@ -13,8 +19,7 @@ public class InteractionObject : MonoBehaviour {
     private void Update() {
         if (Input.GetButtonDown("Interact") && gameObject.GetComponent<CarMovement>().enabled) {
             player.SetActive(true);
-            player.transform.position =
-                new Vector3(transform.position.x + 1, transform.position.y, transform.position.z - 1f);
+            player.transform.position = carExitPoint.position;
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             gameObject.GetComponent<CarMovement>().enabled = false;
         }
@@ -25,6 +30,20 @@ public class InteractionObject : MonoBehaviour {
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             gameObject.GetComponent<CarMovement>().enabled = true;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag == "Player") {
+            indicator.SetActive(true);
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.tag == "Player") {
+            indicator.SetActive(false);
+        }
+
     }
     #endregion
 }

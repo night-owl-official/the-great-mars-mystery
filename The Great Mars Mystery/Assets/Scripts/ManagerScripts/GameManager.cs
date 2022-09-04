@@ -7,9 +7,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private GameObject playerPrefrab;
 
+    [SerializeField]
+    private GameObject carPrefab;
+
     private static List<string> characterNamesAlreadySpokenTo = new List<string>();
 
     private Vector3 playerPos;
+    private Vector3 carPos;
     #endregion
 
     #region Methods
@@ -30,6 +34,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         playerPos = new Vector3(0, 0, 0);
+        carPos  = new Vector3(3, 0, 0);
 
         SceneManager.LoadScene(1);
         SceneManager.activeSceneChanged += ChangedActiveScene;
@@ -42,8 +47,12 @@ public class GameManager : MonoBehaviour {
             // Scene1 has been removed
             currentName = "Replaced";
 
-        if (next.name == "external_map")
+        if (next.name == "external_map") {
             Instantiate(playerPrefrab, playerPos, Quaternion.identity);
+            Instantiate(carPrefab, carPos, Quaternion.identity);
+        }
+
+
     }
     public void killScreen() {
         Debug.Log("KILL SCREEN");
@@ -51,6 +60,10 @@ public class GameManager : MonoBehaviour {
 
     public void SetPlayerPosition(Vector2 pos) {
         playerPos = pos;
+    }
+
+    public void SetCarPosition(Vector2 pos) {
+        carPos = pos;
     }
     #endregion
 }
