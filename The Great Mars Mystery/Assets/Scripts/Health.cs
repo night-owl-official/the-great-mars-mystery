@@ -13,9 +13,6 @@ public class Health : MonoBehaviour {
     public virtual void DeductHPs(float amount) {
         // Decrease current health, never underflowing zero
         m_currentHP = Mathf.Max(m_currentHP - amount, 0f);
-
-        // Temporary log
-        Debug.Log(name + " took " + amount + " damage. Current health: " + m_currentHP);
     }
 
     /// <summary>
