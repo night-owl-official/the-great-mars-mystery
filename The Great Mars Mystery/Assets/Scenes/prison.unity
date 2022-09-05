@@ -21297,6 +21297,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2546909023610126230, guid: 8f3e764db2f14a84497439bcef3a0582,
+        type: 3}
+      propertyPath: dialogues.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546909023610126230, guid: 8f3e764db2f14a84497439bcef3a0582,
+        type: 3}
+      propertyPath: dialogues.Array.data[0]
+      value: The prisoners have escaped!!! ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546909023610126230, guid: 8f3e764db2f14a84497439bcef3a0582,
+        type: 3}
+      propertyPath: dialogues.Array.data[1]
+      value: They were last seen entering the white building please go recapture
+        them!
+      objectReference: {fileID: 0}
     - target: {fileID: 3474635524093744635, guid: 8f3e764db2f14a84497439bcef3a0582,
         type: 3}
       propertyPath: m_RootOrder

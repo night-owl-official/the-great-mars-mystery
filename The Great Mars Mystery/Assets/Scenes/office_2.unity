@@ -13743,6 +13743,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2546909023610126230, guid: 8f3e764db2f14a84497439bcef3a0582,
+        type: 3}
+      propertyPath: dialogues.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546909023610126230, guid: 8f3e764db2f14a84497439bcef3a0582,
+        type: 3}
+      propertyPath: dialogues.Array.data[0]
+      value: Don't go out that door it ends the game please stay with us! ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546909023610126230, guid: 8f3e764db2f14a84497439bcef3a0582,
+        type: 3}
+      propertyPath: dialogues.Array.data[1]
+      value: If you stay you might be able to solve your fathers murder! The boss
+        was hiding something about it. I can't say anymore here.
+      objectReference: {fileID: 0}
     - target: {fileID: 3474635524093744635, guid: 8f3e764db2f14a84497439bcef3a0582,
         type: 3}
       propertyPath: m_RootOrder
@@ -13881,6 +13897,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025181507312247556, guid: 959e981f0c71c3040afaa0827a9cdf31,
+        type: 3}
+      propertyPath: dialogues.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025181507312247556, guid: 959e981f0c71c3040afaa0827a9cdf31,
+        type: 3}
+      propertyPath: dialogues.Array.data[0]
+      value: Congratulations recruit!! ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025181507312247556, guid: 959e981f0c71c3040afaa0827a9cdf31,
+        type: 3}
+      propertyPath: dialogues.Array.data[1]
+      value: You have secured all the escaped prisiners! ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025181507312247556, guid: 959e981f0c71c3040afaa0827a9cdf31,
+        type: 3}
+      propertyPath: dialogues.Array.data[2]
+      value: Unfortunatly I regret to inform you one of the prisnors got your father
+        before you recaptured him. ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025181507312247556, guid: 959e981f0c71c3040afaa0827a9cdf31,
+        type: 3}
+      propertyPath: dialogues.Array.data[3]
+      value: He was a good man!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 959e981f0c71c3040afaa0827a9cdf31, type: 3}
@@ -19691,7 +19733,7 @@ PrefabInstance:
     - target: {fileID: 6341116806836951580, guid: 8ad9fdcfef20c4947874d7e464b624f5,
         type: 3}
       propertyPath: sceneThisDoorLeadsTo
-      value: external_map
+      value: end_credits
       objectReference: {fileID: 0}
     - target: {fileID: 6341116806836951581, guid: 8ad9fdcfef20c4947874d7e464b624f5,
         type: 3}
