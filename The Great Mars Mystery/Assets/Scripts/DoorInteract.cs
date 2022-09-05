@@ -22,10 +22,10 @@ public class DoorInteract : MonoBehaviour {
         if (playerDetected && Input.GetButtonDown("Interact")) {
             if (SceneManager.GetActiveScene().name == "external_map" ||
                 SceneManager.GetActiveScene().name == "external_map_2") {
-                Vector2 currentPlayerPos = GameObject.Find("Player(Clone)").transform.position;
-                Vector2 currentCarPos = GameObject.Find("Car(Clone)").transform.position;
+                Vector2 currentPlayerPos = GameObject.FindWithTag("Player").transform.position;
+                Transform currentCarTransform = GameObject.FindWithTag("Car").transform;
                 FindObjectOfType<GameManager>().SetPlayerPosition(currentPlayerPos);
-                FindObjectOfType<GameManager>().SetCarPosition(currentCarPos);
+                FindObjectOfType<GameManager>().SetCarTrasform(currentCarTransform);
             }
 
             

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     public static bool IsFinalBossAlive { get; set; }
 
     private Vector3 playerPos;
-    private Vector3 carPos;
+    private Transform carTransform;
     private SoundManager soundManager;
     #endregion
 
@@ -32,7 +32,8 @@ public class GameManager : MonoBehaviour {
 
     public void StartGame() {
         playerPos = new Vector3(0, 0, 0);
-        carPos = new Vector3(3, 0, 0);
+        //carTransform.position = new Vector3(3f, 0, 0);
+        //carTransform.rotation = Quaternion.identity;
         PlayerHealth.Reset();
 
         IsFinalBossAlive = false;
@@ -68,23 +69,13 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         playerPos = new Vector3(0, 0, 0);
-        carPos  = new Vector3(3, 0, 0);
+        //carTransform.position = new Vector3(3f, 0, 0);
+        //carTransform.rotation = Quaternion.identity;
 
         SceneManager.activeSceneChanged += ChangedActiveScene;
     }
 
     private void ChangedActiveScene(Scene current, Scene next) {
-        string currentName = current.name;
-
-        if (currentName == null)
-            // Scene1 has been removed
-            currentName = "Replaced";
-
-        if (next.name == "external_map" || next.name == "external_map_2") {
-            Instantiate(playerPrefrab, playerPos, Quaternion.identity);
-            Instantiate(carPrefab, carPos, Quaternion.identity);
-        }
-
         if (next.name == "apartment")
             IsFinalBossAlive = true;
     }
@@ -105,8 +96,8 @@ public class GameManager : MonoBehaviour {
         playerPos = pos;
     }
 
-    public void SetCarPosition(Vector2 pos) {
-        carPos = pos;
+    public void SetCarTrasform(Transform carTransform) {
+        this.carTransform = carTransform;
     }
     #endregion
 }
