@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour {
     private static List<string> characterNamesAlreadySpokenTo = new List<string>();
     public static bool IsFinalBossAlive { get; set; }
 
-    private Vector3 playerPos;
-    private Vector3 carPos;
+    private Vector2 playerPos;
+    private Vector2 carPos;
     private Quaternion carRot;
     private SoundManager soundManager;
     #endregion
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour {
     private void ChangedActiveScene(Scene current, Scene next) {
         if (next.name == "external_map" || next.name == "external_map_2") {
             Instantiate(playerPrefab, playerPos, Quaternion.identity);
-            Instantiate(carPrefab, carPos, carRot);
+            Instantiate(carPrefab, carPos, Quaternion.identity);
         }
 
         if (next.name == "apartment")
@@ -102,9 +102,8 @@ public class GameManager : MonoBehaviour {
         playerPos = pos;
     }
 
-    public void SetCarTrasform(Transform carTransform) {
-        carPos = carTransform.position;
-        carRot = carTransform.rotation;
+    public void SetCarPosition(Vector2 pos) {
+        carPos = pos;
     }
     #endregion
 }

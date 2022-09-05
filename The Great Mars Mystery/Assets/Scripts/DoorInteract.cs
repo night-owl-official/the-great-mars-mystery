@@ -23,9 +23,9 @@ public class DoorInteract : MonoBehaviour {
             if (SceneManager.GetActiveScene().name == "external_map" ||
                 SceneManager.GetActiveScene().name == "external_map_2") {
                 Vector2 currentPlayerPos = GameObject.FindWithTag("Player").transform.position;
-                Transform currentCarTransform = GameObject.FindWithTag("Car").transform;
+                Vector2 currentCarPosition = GameObject.FindWithTag("Car").transform.position;
                 FindObjectOfType<GameManager>().SetPlayerPosition(currentPlayerPos);
-                FindObjectOfType<GameManager>().SetCarTrasform(currentCarTransform);
+                FindObjectOfType<GameManager>().SetCarPosition(currentCarPosition);
             }
 
             
