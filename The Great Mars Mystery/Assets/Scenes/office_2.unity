@@ -13831,7 +13831,7 @@ PrefabInstance:
     - target: {fileID: 211933841743553370, guid: 959e981f0c71c3040afaa0827a9cdf31,
         type: 3}
       propertyPath: m_Name
-      value: Office_Boss
+      value: Office_Boss1
       objectReference: {fileID: 0}
     - target: {fileID: 211933841743553370, guid: 959e981f0c71c3040afaa0827a9cdf31,
         type: 3}
