@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
     #region Member variables
     [SerializeField]
-    private GameObject playerPrefrab;
+    private GameObject playerPrefab;
 
     [SerializeField]
     private GameObject carPrefab;
@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour {
     public static bool IsFinalBossAlive { get; set; }
 
     private Vector3 playerPos;
-    private Transform carTransform;
+    private Vector3 carPos;
+    private Quaternion carRot;
     private SoundManager soundManager;
     #endregion
 
@@ -32,8 +33,8 @@ public class GameManager : MonoBehaviour {
 
     public void StartGame() {
         playerPos = new Vector3(0, 0, 0);
-        //carTransform.position = new Vector3(3f, 0, 0);
-        //carTransform.rotation = Quaternion.identity;
+        carPos = new Vector3(3f, 0, 0);
+        carRot = Quaternion.identity;
         PlayerHealth.Reset();
 
         IsFinalBossAlive = false;
@@ -69,13 +70,18 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         playerPos = new Vector3(0, 0, 0);
-        //carTransform.position = new Vector3(3f, 0, 0);
-        //carTransform.rotation = Quaternion.identity;
+        carPos = new Vector3(3f, 0, 0);
+        carRot = Quaternion.identity;
 
         SceneManager.activeSceneChanged += ChangedActiveScene;
     }
 
     private void ChangedActiveScene(Scene current, Scene next) {
+        if (next.name == "external_map" || next.name == "external_map_2") {
+            Instantiate(playerPrefab, playerPos, Quaternion.identity);
+            Instantiate(carPrefab, carPos, carRot);
+        }
+
         if (next.name == "apartment")
             IsFinalBossAlive = true;
     }
@@ -97,7 +103,8 @@ public class GameManager : MonoBehaviour {
     }
 
     public void SetCarTrasform(Transform carTransform) {
-        this.carTransform = carTransform;
+        carPos = carTransform.position;
+        carRot = carTransform.rotation;
     }
     #endregion
 }
