@@ -13,9 +13,7 @@ public class GameManager : MonoBehaviour {
     private static List<string> characterNamesAlreadySpokenTo = new List<string>();
     public static bool IsFinalBossAlive { get; set; }
 
-    private Vector2 playerPos;
-    private Vector2 carPos;
-    private Quaternion carRot;
+    private Vector3 playerPos;
     private SoundManager soundManager;
     #endregion
 
@@ -33,8 +31,6 @@ public class GameManager : MonoBehaviour {
 
     public void StartGame() {
         playerPos = new Vector3(0, 0, 0);
-        carPos = new Vector3(3f, 0, 0);
-        carRot = Quaternion.identity;
         PlayerHealth.Reset();
 
         IsFinalBossAlive = false;
@@ -70,17 +66,13 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         playerPos = new Vector3(0, 0, 0);
-        carPos = new Vector3(3f, 0, 0);
-        carRot = Quaternion.identity;
 
         SceneManager.activeSceneChanged += ChangedActiveScene;
     }
 
     private void ChangedActiveScene(Scene current, Scene next) {
-        if (next.name == "external_map" || next.name == "external_map_2") {
+        if (next.name == "external_map" || next.name == "external_map_2")
             Instantiate(playerPrefab, playerPos, Quaternion.identity);
-            Instantiate(carPrefab, carPos, Quaternion.identity);
-        }
 
         if (next.name == "apartment")
             IsFinalBossAlive = true;
@@ -100,10 +92,6 @@ public class GameManager : MonoBehaviour {
 
     public void SetPlayerPosition(Vector2 pos) {
         playerPos = pos;
-    }
-
-    public void SetCarPosition(Vector2 pos) {
-        carPos = pos;
     }
     #endregion
 }
