@@ -19,7 +19,7 @@ public class Health : MonoBehaviour {
     /// Checks to see if there's no HPs left.
     /// </summary>
     /// <returns>True if there are no more HPs left, false otherwise.</returns>
-    public bool IsZero() { return m_currentHP <= 0f; }
+    public virtual bool IsZero() { return m_currentHP <= 0f; }
     #endregion
 
     #region Member variables

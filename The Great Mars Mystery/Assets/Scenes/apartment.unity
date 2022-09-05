@@ -999,6 +999,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6341116806836951583, guid: 8ad9fdcfef20c4947874d7e464b624f5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ad9fdcfef20c4947874d7e464b624f5, type: 3}
 --- !u!1001 &464818665
@@ -20365,7 +20370,7 @@ PrefabInstance:
     - target: {fileID: 1744496743433488646, guid: 751a70192f6dee24ea17840ada3ef116,
         type: 3}
       propertyPath: m_Name
-      value: enemy
+      value: FinalBoss
       objectReference: {fileID: 0}
     - target: {fileID: 4640612662383066387, guid: 751a70192f6dee24ea17840ada3ef116,
         type: 3}

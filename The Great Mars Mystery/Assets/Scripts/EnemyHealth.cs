@@ -21,6 +21,13 @@ public class EnemyHealth : Health {
         base.DeductHPs(amount);
         enemyHPBar.value = m_currentHP;
     }
+
+    public override bool IsZero() {
+        if (name == "FinalBoss" && m_currentHP <= 0f)
+            GameManager.IsFinalBossAlive = false;
+
+        return m_currentHP <= 0f; 
+    }
     #endregion
 
     #region Member variables

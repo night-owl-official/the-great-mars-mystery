@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     private GameObject carPrefab;
 
     private static List<string> characterNamesAlreadySpokenTo = new List<string>();
+    public static bool IsFinalBossAlive { get; set; }
 
     private Vector3 playerPos;
     private Vector3 carPos;
@@ -34,6 +35,8 @@ public class GameManager : MonoBehaviour {
         carPos = new Vector3(3, 0, 0);
         PlayerHealth.Reset();
 
+        IsFinalBossAlive = false;
+
         SceneManager.LoadScene(1);
 
         if (!soundManager)
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GoBackToMainMenu() {
+        IsFinalBossAlive = false;
         SceneManager.LoadScene(0);
         Destroy(gameObject); // Get rid of this game manager as there's already one in main menu
     }
@@ -80,6 +84,9 @@ public class GameManager : MonoBehaviour {
             Instantiate(playerPrefrab, playerPos, Quaternion.identity);
             Instantiate(carPrefab, carPos, Quaternion.identity);
         }
+
+        if (next.name == "apartment")
+            IsFinalBossAlive = true;
     }
 
     public void killScreen() {
@@ -90,6 +97,8 @@ public class GameManager : MonoBehaviour {
 
         soundManager.StopPlayingSound("tune");
         soundManager.Play("game_over");
+
+        IsFinalBossAlive = false;
     }
 
     public void SetPlayerPosition(Vector2 pos) {

@@ -28,14 +28,14 @@ public class DoorInteract : MonoBehaviour {
                 FindObjectOfType<GameManager>().SetCarPosition(currentCarPos);
             }
 
+            
             SceneManager.LoadScene(sceneThisDoorLeadsTo);
             FindObjectOfType<SoundManager>().Play("door_unlock");
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Player") {
+        if (other.tag == "Player" && !GameManager.IsFinalBossAlive) {
             playerDetected = true;
             indicator.SetActive(true);
         }
